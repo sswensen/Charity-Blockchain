@@ -1,0 +1,30 @@
+# Hidden Files (override with 'add -f') #
+.*
+!.gitignore
+!/.css
+
+# IntelliJ generated files #
+.idea/
+*.iml
+
+# Maven generated files #
+**/target/
+**/out/
+
+# Packages #
+*.jar
+*.tar
+*.zip
+
+# Logs #
+*.log
+
+# OS generated files #
+.DS_Store
+.DS_Store?
+._*
+
+# Webpack Stuff #
+**/node_modules
+npm-debug.log
+/*.env
