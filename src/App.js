@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import web3 from "./web3";
-import trojanSecret from "./trojanSecret";
+import trojanSecret from "./CharitableDonations";
 import TopBar from "./components/TopBar";
 import { Container, Card } from "semantic-ui-react";
 import Register from "./components/Register";

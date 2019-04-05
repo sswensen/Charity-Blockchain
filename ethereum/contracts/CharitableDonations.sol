@@ -20,8 +20,9 @@ contract CharityFactory {
 	address owner;
 	address[] donators;
 	mapping(address => uint) public donations;
-	string[] transactionAmount;
-	string[] transactionDescription;
+	string[] transactionAmounts;
+	string[] transactionDescriptions;
+	uint transactionCount;
 
 	enum charity_state {
 		STARTED, FINISHED
@@ -29,7 +30,7 @@ contract CharityFactory {
 	charity_state public STATE;
 
 
-	// Mofifiers
+	// ------------------------ Modifiers ------------------------ //
 	modifier ongoing(){
 		require(charity_state.STARTED == STATE);
 		_;
@@ -40,7 +41,7 @@ contract CharityFactory {
 		_;
 	}
 
-	// EVENTS
+	// ------------------------ EVENTS ------------------------ //
 	event DonateEvent(address donator, uint amount);
 	event WithdrawalEvent(address withdrawer, uint256 amount, string reason);
 }
@@ -55,10 +56,21 @@ contract Charity is CharityFactory {
 		description = _description;
 		owner = msg.sender;
 		balance = 0;
+		transactionCount = 0;
 		STATE = charity_state.STARTED;
 	}
 
-	function getOwner() public view returns (address){
+	// ------------------------ GETTERS ------------------------ //
+
+	function getCharityName() public view returns (string) {
+		return name;
+	}
+
+	function getCharityDescription() public view returns (string) {
+		return description;
+	}
+
+	function getOwner() public view returns (address) {
 		return owner;
 	}
 
@@ -66,13 +78,31 @@ contract Charity is CharityFactory {
 		return donations[msg.sender];
 	}
 
+	function getCharityBalance() public view returns (uint) {
+		return balance;
+	}
+
 	function getDonators(int x, int y) {
 		//TODO Create secondary data structure (see TrojanSecret)
 	}
 
-	function getDontation() public view returns (uint) {
-		return donations[msg.sender];
+	function getTranscationAmounts() view returns (bytes) {
+		if(transactionCount <= 0) {
+			return getBytesOfArray(0, 0, "transactionAmounts");
+		} else {
+			return getBytesOfArray(0, transactionCount - 1, "transactionAmounts");
+		}
 	}
+
+	function getTranscationDescriptions() view returns (bytes) {
+		if(transactionCount <= 0) {
+			return getBytesOfArray(0, 0, "transactionDescriptions");
+		} else {
+			return getBytesOfArray(0, transactionCount - 1, "transactionDescriptions");
+		}
+	}
+
+	// ------------------------ ACTIONS ------------------------ //
 
 	function donate(uint amount) public payable ongoing returns (bool) {
 		uint current = donations[msg.sender] + msg.value;
@@ -91,10 +121,94 @@ contract Charity is CharityFactory {
 
 	function withdrawl(uint amount, string reason) public only_owner returns (bool) {
 		require(balance >= amount);
-		transactionAmount.push(amount);
-		transactionDescription.push(reason);
+		transactionAmounts.push(uint2str(amount));
+		transactionDescriptions.push(reason);
+		transactionCount++;
 		msg.sender.transfer(amount);
 		emit WithdrawalEvent(msg.sender, amount, reason);
 		return true;
+	}
+
+	// ------------------------ HELPER FUNCTIONS ------------------------ //
+	// Convert uint to string (https://ethereum.stackexchange.com/questions/6591/conversion-of-uint-to-string)
+	function uint2str(uint i) internal pure returns (string){
+		if (i == 0) return "0";
+		uint j = i;
+		uint length;
+		while (j != 0){
+			length++;
+			j /= 10;
+		}
+		bytes memory bstr = new bytes(length);
+		uint k = length - 1;
+		while (i != 0){
+			bstr[k--] = byte(48 + i % 10);
+			i /= 10;
+		}
+		return string(bstr);
+	}
+
+	// Convert string array to bytes (modified from https://hackernoon.com/serializing-string-arrays-in-solidity-db4b6037e520)
+	function getBytesOfArray(uint startindex, uint endindex, string arrayName) private view returns (bytes serialized){
+		string[] array;
+		if(compareStrings(arrayName, "transactionAmounts")) {
+			array = transactionAmounts;
+		}
+		if(compareStrings(arrayName, "transactionDescriptions")) {
+			array = transactionDescriptions;
+		}
+
+		require(endindex >= startindex);
+
+		if (endindex > (array.length - 1)) {
+			endindex = array.length - 1;
+		}
+
+		//64 byte is needed for safe storage of a single string.
+		//((endindex - startindex) + 1) is the number of strings we want to pull out.
+		uint offset = 64 * ((endindex - startindex) + 1);
+
+		bytes memory buffer = new  bytes(offset);
+		string memory out1 = new string(32);
+
+
+		for (uint i = startindex; i <= endindex; i++) {
+			out1 = array[i];
+
+			stringToBytes(offset, bytes(out1), buffer);
+			offset -= sizeOfString(out1);
+		}
+
+		return (buffer);
+	}
+
+	// Get size of String (from https://github.com/pouladzade/Seriality/blob/master/src/SizeOf.sol)
+	function sizeOfString(string memory _in) internal pure returns (uint _size) {
+		_size = bytes(_in).length / 32;
+		if (bytes(_in).length % 32 != 0)
+			_size++;
+
+		_size++;
+		// first 32 bytes is reserved for the size of the string
+		_size *= 32;
+	}
+
+	// Convert String to bytes (from https://github.com/pouladzade/Seriality/blob/master/src/TypesToBytes.sol)
+	function stringToBytes(uint _offst, bytes memory _input, bytes memory _output) internal pure {
+		uint256 stack_size = _input.length / 32;
+		if (_input.length % 32 > 0) stack_size++;
+
+		assembly {
+			stack_size := add(stack_size, 1)//adding because of 32 first bytes memory as the length
+			for {let index := 0} lt(index, stack_size){index := add(index, 1)} {
+				mstore(add(_output, _offst), mload(add(_input, mul(index, 32))))
+				_offst := sub(_offst, 32)
+			}
+		}
+	}
+
+	// utility function to compare strings
+	function compareStrings(string a, string b) private view returns (bool){
+		return keccak256(a) == keccak256(b);
 	}
 }

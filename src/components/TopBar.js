@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Menu, Header, Dropdown } from "semantic-ui-react";
-import trojanSecret from "../trojanSecret";
+import trojanSecret from "../CharitableDonations";
 
 class TopBar extends Component {
   state = {

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Button, Header, Icon, Modal, Form, Message} from "semantic-ui-react";
 import web3 from "../web3";
-import trojanSecret from "../trojanSecret";
+import trojanSecret from "../CharitableDonations";
 
 export default class ListPlayers extends Component {
     state = {
@@ -43,6 +43,7 @@ export default class ListPlayers extends Component {
         this.setState({modalOpen: true});
         const numPlayers = await trojanSecret.methods.memberCount().call();
         const players = this.convert(await trojanSecret.methods.listPlayers().call());
+        //console.log(this.convert("0x70697a7a610000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005"));
         //const players = this.convert("0x426f6200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003416c696365000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000553636f74740000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005");
         this.setState({
             numPlayers: numPlayers,

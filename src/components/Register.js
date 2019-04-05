@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Header, Icon, Modal, Form, Message } from "semantic-ui-react";
 import web3 from "../web3";
-import trojanSecret from "../trojanSecret";
+import trojanSecret from "../CharitableDonations";
 
 export default class Register extends Component {
   state = {
