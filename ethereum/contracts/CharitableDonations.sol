@@ -159,6 +159,12 @@ contract Charity is CharityFactory {
 		}
 		balance += msg.value;
 
+
+		transactionAmounts.push(uint2str(amount));
+		transactionDescriptions.push(toAsciiString(msg.sender));
+		transactionCount++;
+
+
 		emit DonateEvent(msg.sender, msg.value);
 
 		return true;
@@ -255,5 +261,23 @@ contract Charity is CharityFactory {
 	// utility function to compare strings
 	function compareStrings(string a, string b) private view returns (bool){
 		return keccak256(a) == keccak256(b);
+	}
+
+	// Address to string (https://ethereum.stackexchange.com/questions/8346/convert-address-to-string)
+	function toAsciiString(address x) returns (string) {
+		bytes memory s = new bytes(40);
+		for (uint i = 0; i < 20; i++) {
+			byte b = byte(uint8(uint(x) / (2**(8*(19 - i)))));
+			byte hi = byte(uint8(b) / 16);
+			byte lo = byte(uint8(b) - 16 * uint8(hi));
+			s[2*i] = char(hi);
+			s[2*i+1] = char(lo);
+		}
+		return string(s);
+	}
+
+	function char(byte b) returns (byte c) {
+		if (b < 10) return byte(uint8(b) + 0x30);
+		else return byte(uint8(b) + 0x57);
 	}
 }
