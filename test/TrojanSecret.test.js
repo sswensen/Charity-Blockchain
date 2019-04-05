@@ -4,7 +4,7 @@ const Web3 = require("web3");
 const provider = ganache.provider();
 const web3 = new Web3(provider);
 
-const compiledTrojanSecret = require("../ethereum/build/TrojanSecret.json");
+const compiledTrojanSecret = require("../ethereum/build/CharitableDonations.json");
 
 let accounts;
 let trojanSecret;

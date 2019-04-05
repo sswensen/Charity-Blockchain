@@ -67,9 +67,11 @@ export default class ListPlayers extends Component {
                 <Header icon="browser" content="List All Players"/>
                 <Modal.Content>
                     <h3>
-                        <ul>{this.state.players.map((player) =>
+                        <ul>
+                            {this.state.players.map((player) =>
                             <li key={player}>{player}</li>
-                        )}</ul>
+                        )}
+                        </ul>
                         <br/>
                         {this.state.numPlayers} names have
                         been registered to play this game.
