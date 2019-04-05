@@ -2,14 +2,56 @@ pragma solidity ^0.4.25;
 
 contract CharitableDonations {
 	mapping(string => address) charityNameToContractAddr;
-	mapping(address => string) userAddrToCharityName;
+	mapping(string => Charity) charityNameToCharityObject;
+	mapping(address => string[]) userAddrToCharityName;
+	uint charityCount;
+	Charity[] charities;
+	string name;
 
-	function addCharity() {
-		//TODO add paramaters too
+	function deployCharity(string name, string description) {
+		//TODO Deploy charity contract (child) and add to mapping structures
+		Charity c = new Charity(name, description, msg.sender);
+		charityNameToCharityObject[name] = c;
+		charities.push(c);
+		charityNameToContractAddr[name] =  address(c);
+		charityCount++;
+		userAddrToCharityName[msg.sender].push(name);
 	}
 
-	function deployCharity() {
-		//TODO Deploy charity contract (child) and add to mapping structures
+	function getCharityNames() public view returns (string){
+		for(uint i = 0; i < charities.length; i++) {
+			name = strConcat(name,charities[i].getCharityName(), " ");
+			//ret = strConcat(ret, " ", name);
+		}
+
+		return name;
+	}
+
+	function getChairityAddress(string name) view returns (address){
+		return charityNameToCharityObject[name].getAddress();
+	}
+
+	// String concat
+	function strConcat(string a, string b, string c) returns (string){
+		bytes memory ba = bytes(a);
+		bytes memory bb = bytes(b);
+		bytes memory bc = bytes(c);
+
+		string memory str = new string(ba.length + bb.length + bc.length);
+		bytes memory bStr = bytes(str);
+		uint k = 0;
+		for (uint i = 0; i < ba.length; i++){
+			bStr[k++] = ba[i];
+		}
+		for (i = 0; i < bb.length; i++){
+			bStr[k++] = bb[i];
+		}
+		for (i = 0; i < bc.length; i++){
+			bStr[k++] = bc[i];
+		}
+
+
+		return string(bStr);
 	}
 }
 
@@ -51,16 +93,19 @@ contract Charity is CharityFactory {
 		// Callback
 	}
 
-	function Charity(string _name, string _description) {
+	function Charity(string _name, string _description, address _sender) {
 		name = _name;
 		description = _description;
-		owner = msg.sender;
+		owner = _sender;
 		balance = 0;
 		transactionCount = 0;
 		STATE = charity_state.STARTED;
 	}
 
 	// ------------------------ GETTERS ------------------------ //
+	function getAddress() public view returns (address) {
+		return address(this);
+	}
 
 	function getCharityName() public view returns (string) {
 		return name;
