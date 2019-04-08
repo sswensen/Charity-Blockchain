@@ -1,6 +1,6 @@
 pragma solidity ^0.4.25;
 
-import './CharityFactory.sol';
+import './Charity.sol';
 import './Helpers.sol';
 
 contract CharitableDonations {

@@ -1,14 +1,46 @@
 pragma solidity ^0.4.25;
 
-import './CharityFactory.sol';
 import './Helpers.sol';
 
-contract Charity is CharityFactory {
-	function() {
+contract Charity {
+	string name;
+	string description;
+	uint balance; //TODO make this able to store decimals
+	address owner;
+	address[] donators;
+	mapping(address => uint) public donations;
+	string[] transactionAmounts;
+	string[] transactionDescriptions;
+	uint transactionCount;
+	Helpers h;
+
+	enum charity_state {
+		STARTED, FINISHED
+	}
+	charity_state public STATE;
+
+
+	// ------------------------ Modifiers ------------------------ //
+	modifier ongoing(){
+		require(charity_state.STARTED == STATE);
+		_;
+	}
+
+	modifier only_owner(address _sender){
+		require(_sender == owner);
+		_;
+	}
+
+	// ------------------------ EVENTS ------------------------ //
+	event DonateEvent(address donator, uint amount);
+	event WithdrawalEvent(address withdrawer, uint256 amount, string reason);
+
+	function() public {
 		// Callback
 	}
 
-	function Charity(string _name, string _description, address _sender) {
+	constructor(string _name, string _description, address _sender, Helpers _h) public {
+		h = _h;
 		name = _name;
 		description = _description;
 		owner = _sender;
@@ -42,11 +74,7 @@ contract Charity is CharityFactory {
 		return balance;
 	}
 
-	function getDonators(int x, int y) {
-		//TODO Create secondary data structure (see TrojanSecret)
-	}
-
-	function getTranscationAmounts() view returns (bytes) {
+	function getTranscationAmounts() public view returns (bytes) {
 		if (transactionCount <= 0) {
 			return getBytesOfArray(0, 0, "transactionAmounts");
 		} else {
@@ -54,7 +82,7 @@ contract Charity is CharityFactory {
 		}
 	}
 
-	function getTranscationDescriptions() view returns (bytes) {
+	function getTranscationDescriptions() public view returns (bytes) {
 		if (transactionCount <= 0) {
 			return getBytesOfArray(0, 0, "transactionDescriptions");
 		} else {
@@ -74,7 +102,7 @@ contract Charity is CharityFactory {
 		}
 		balance += amount;
 
-		transact(amount, Helpers.toAsciiString(donator));
+		transact(amount, h.toAsciiString(donator));
 
 
 		emit DonateEvent(msg.sender, msg.value);
@@ -90,8 +118,8 @@ contract Charity is CharityFactory {
 		return true;
 	}
 
-	function transact(uint amount, string reason) {
-		transactionAmounts.push(Helpers.uint2str(amount));
+	function transact(uint amount, string reason) public {
+		transactionAmounts.push(h.uint2str(amount));
 		transactionDescriptions.push(reason);
 		transactionCount++;
 	}
@@ -102,11 +130,11 @@ contract Charity is CharityFactory {
 
 	// Convert string array to bytes (modified from https://hackernoon.com/serializing-string-arrays-in-solidity-db4b6037e520)
 	function getBytesOfArray(uint startindex, uint endindex, string arrayName) private view returns (bytes serialized){
-		string[] array;
-		if (Helpers.compareStrings(arrayName, "transactionAmounts")) {
+		string[] storage array = transactionAmounts;
+		if (h.compareStrings(arrayName, "transactionAmounts")) {
 			array = transactionAmounts;
 		}
-		if (Helpers.compareStrings(arrayName, "transactionDescriptions")) {
+		if (h.compareStrings(arrayName, "transactionDescriptions")) {
 			array = transactionDescriptions;
 		}
 
@@ -127,8 +155,8 @@ contract Charity is CharityFactory {
 		for (uint i = startindex; i <= endindex; i++) {
 			out1 = array[i];
 
-			Helpers.stringToBytes(offset, bytes(out1), buffer);
-			offset -= Helpers.sizeOfString(out1);
+			h.stringToBytes(offset, bytes(out1), buffer);
+			offset -= h.sizeOfString(out1);
 		}
 
 		return (buffer);
