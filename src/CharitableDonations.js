@@ -1,8 +1,26 @@
 import web3 from "./web3";
 
-const address = "";
+const address = "0x0047612650ab6d081555bCDc9Ab7c5D7Ec9F0C74";
 
 const abi = [
+    {
+        constant: false,
+        inputs: [],
+        name: "getCharityNames",
+        outputs: [{name: "charitiesInBytes", type: "bytes"}],
+        payable: false,
+        stateMutability: "view",
+        type: "function"
+    },
+    {
+        constant: false,
+        inputs: [],
+        name: "getNumCharities",
+        outputs: [{name: "charityCount", type: "uint256"}],
+        payable: false,
+        stateMutability: "view",
+        type: "function"
+    },
     {
         constant: false,
         inputs: [],

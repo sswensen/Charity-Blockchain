@@ -80,4 +80,16 @@ contract CharitableDonations {
 	function getChairityAddress(string name) public view returns (address){
 		return charityNameToCharityObject[name].getAddress();
 	}
+
+	// Donate to a charity based on name
+	function donate(string name) public paybale returns (bool) {
+		Charity c = getCharityByName(name);
+		// TODO finish this (ensure paybale) and TEST
+		return c.donate(msg.value, msg.sender);
+	}
+
+	// Get a charity object based on name
+	function getCharityByName(string name) internal returns (Charity) {
+		return charityNameToCharityObject.get(name);
+	}
 }

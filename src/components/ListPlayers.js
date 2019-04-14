@@ -3,7 +3,7 @@ import {Button, Header, Icon, Modal, Form, Message} from "semantic-ui-react";
 import web3 from "../web3";
 import trojanSecret from "../CharitableDonations";
 
-export default class ListPlayers extends Component {
+export default class Charity extends Component {
     state = {
         modalOpen: false,
         numPlayers: "0",
@@ -53,6 +53,28 @@ export default class ListPlayers extends Component {
 
 
     handleClose = () => this.setState({modalOpen: false});
+
+    onSubmit = async event => {
+        event.preventDefault();
+        this.setState({
+            loading: true,
+            errorMessage: "",
+            message: "waiting for blockchain transaction to complete..."
+        });
+        try {
+            const accounts = await web3.eth.getAccounts();
+            await trojanSecret.methods.unlockMessage(this.state.value).send({
+                from: accounts[0],
+                value: web3.utils.toWei("1", "ether")
+            });
+        } catch (err) {
+            this.setState({ errorMessage: err.message });
+        }
+        this.setState({
+            loading: false,
+            message: "The message has been unlocked!"
+        });
+    };
 
     render() {
         return (
