@@ -1,5 +1,5 @@
 
-// Dose not work 
+// Dose not work
 
 const Charity = artifacts.require('Charity');
 const Helpers = artifacts.require('Helpers');

@@ -10,7 +10,7 @@ contract Charity {
 	string[] transactionAmounts;
 	string[] transactionDescriptions;
 	uint transactionCount;
-	Helpers h;
+	//Helpers h;
 
 	enum charity_state {
 		STARTED, FINISHED
@@ -37,11 +37,13 @@ contract Charity {
 		// Callback
 	}
 
-	constructor(string _name, string _description, address _sender, Helpers _h) public {
-		h = _h;
+
+	constructor(string _name, string _description) public {
+		//h = _h;
 		name = _name;
 		description = _description;
-		owner = _sender;
+	//	owner = _sender;
+		owner = msg.sender;
 		balance = 0;
 		transactionCount = 0;
 		STATE = charity_state.STARTED;
@@ -100,7 +102,7 @@ contract Charity {
 		}
 		balance += amount;
 
-		transact(amount, h.toAsciiString(donator));
+		transact(amount, toAsciiString(donator));
 
 
 		emit DonateEvent(msg.sender, msg.value);
@@ -117,7 +119,7 @@ contract Charity {
 	}
 
 	function transact(uint amount, string reason) public {
-		transactionAmounts.push(h.uint2str(amount));
+		transactionAmounts.push(uint2str(amount));
 		transactionDescriptions.push(reason);
 		transactionCount++;
 	}
@@ -129,10 +131,10 @@ contract Charity {
 	// Convert string array to bytes (modified from https://hackernoon.com/serializing-string-arrays-in-solidity-db4b6037e520)
 	function getBytesOfArray(uint startindex, uint endindex, string arrayName) private view returns (bytes serialized){
 		string[] storage array = transactionAmounts;
-		if (h.compareStrings(arrayName, "transactionAmounts")) {
+		if (compareStrings(arrayName, "transactionAmounts")) {
 			array = transactionAmounts;
 		}
-		if (h.compareStrings(arrayName, "transactionDescriptions")) {
+		if (compareStrings(arrayName, "transactionDescriptions")) {
 			array = transactionDescriptions;
 		}
 
@@ -153,8 +155,8 @@ contract Charity {
 		for (uint i = startindex; i <= endindex; i++) {
 			out1 = array[i];
 
-			h.stringToBytes(offset, bytes(out1), buffer);
-			offset -= h.sizeOfString(out1);
+			stringToBytes(offset, bytes(out1), buffer);
+			offset -= sizeOfString(out1);
 		}
 
 		return (buffer);

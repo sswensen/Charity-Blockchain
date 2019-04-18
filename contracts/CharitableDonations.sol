@@ -20,7 +20,7 @@ contract CharitableDonations {
 		//TODO Deploy charity contract (child) and add to mapping structures
 
 		// Create charity
-		Charity c = new Charity(name, description, msg.sender, h);
+		Charity c = new Charity(name, description);
 
 		// Add charity C to name to charity hashmap
 		charityNameToCharityObject[name] = c;
