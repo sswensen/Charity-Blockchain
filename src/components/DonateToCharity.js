@@ -3,7 +3,7 @@ import {Button, Header, Icon, Modal, Form, Message, Grid} from "semantic-ui-reac
 import web3 from "../web3";
 import trojanSecret from "../CharitableDonations";
 
-export default class Charity extends Component {
+export default class DonateToCharity extends Component {
     state = {
         modalOpen: false,
         numPlayers: "0",
@@ -52,7 +52,8 @@ export default class Charity extends Component {
         return (
             <Modal
                 trigger={
-                    <div className="ui basic orange button" onClick={this.handleOpen}>Details</div>
+                    <div className="ui basic green button" onClick={this.handleOpen}>Donate</div>
+
                 }
                 open={this.state.modalOpen}
                 onClose={this.handleClose}
@@ -65,22 +66,6 @@ export default class Charity extends Component {
                     <h3>
                         {this.props.description}
                     </h3>
-                    <Grid>
-                    </Grid>
-                    <div className="ui grid">
-                        <div className="four wide column">
-
-                        </div>
-                        <div className="four wide column">
-
-                        </div>
-                        <div className="four wide column">
-
-                        </div>
-                        <div className="four wide column">
-
-                        </div>
-                    </div>
 
                     <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
                         <Form.Field>
