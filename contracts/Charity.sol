@@ -1,7 +1,5 @@
 pragma solidity ^0.4.25;
 
-import './Helpers.sol';
-
 contract Charity {
 	string name;
 	string description;
@@ -161,7 +159,7 @@ contract Charity {
 
 		return (buffer);
 	}
-	
+
 	// ------------------------ HELPER FUNCTIONS ------------------------ //
 	// Convert uint to string (https://ethereum.stackexchange.com/questions/6591/conversion-of-uint-to-string)
 	function uint2str(uint i)  public pure returns (string){
