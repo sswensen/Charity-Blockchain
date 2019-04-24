@@ -5,7 +5,8 @@
       "inputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "constructor"
+      "type": "constructor",
+      "signature": "constructor"
     },
     {
       "constant": false,
@@ -23,7 +24,8 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x815a3ec3"
     },
     {
       "constant": false,
@@ -37,7 +39,8 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "signature": "0x720a7dee"
     },
     {
       "constant": true,
@@ -51,7 +54,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x2614e72c"
     },
     {
       "constant": true,
@@ -65,7 +69,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0x658be92f"
     },
     {
       "constant": true,
@@ -84,7 +89,8 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "signature": "0xfa40b167"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.4.25+commit.59dbf8f1\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"getUsersCharitites\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getNumCharities\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"getCharityNames\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"description\",\"type\":\"string\"}],\"name\":\"deployCharity\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"name\",\"type\":\"string\"}],\"name\":\"getChairityAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/SummitDrift/Dropbox/Web/Classes/cs481/test/Charity-Blockchain/contracts/CharitableDonations.sol\":\"CharitableDonations\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/SummitDrift/Dropbox/Web/Classes/cs481/test/Charity-Blockchain/contracts/CharitableDonations.sol\":{\"keccak256\":\"0x9a757db75a871c71475140744ef2bd860205285829968bdcb426455306ed33fe\",\"urls\":[\"bzzr://33426e0e39571e34555ffef24c1f3ba2bfb3c3620474ed739790de2b2ad3fd90\"]},\"/Users/SummitDrift/Dropbox/Web/Classes/cs481/test/Charity-Blockchain/contracts/Charity.sol\":{\"keccak256\":\"0x8e6d371f2b8495a6e6dbf100fb4b7a1251ea0d4cd368a35f9cfd489fc87de166\",\"urls\":[\"bzzr://6345309c84e2541e3d2cc0244a3ed5b3a81a474f70c95c59d58fd5a12e8b1fc3\"]},\"/Users/SummitDrift/Dropbox/Web/Classes/cs481/test/Charity-Blockchain/contracts/Helpers.sol\":{\"keccak256\":\"0xd57d3dfe5ef59777f27a14b71a3c9f323e3d6874135977a1af948f282e3a607d\",\"urls\":[\"bzzr://c5970df14f1a24bf3aee070cc7c6b1f6a02a1c809ba98d0dfc2ad3e9c26c6c78\"]}},\"version\":1}",
@@ -6138,9 +6144,16 @@
     "name": "solc",
     "version": "0.4.25+commit.59dbf8f1.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x54fa0dA8dcCA65bc4A05829376F5dF2cEb643Ce3",
+      "transactionHash": "0xa65459b891d3e916e31d03377bcb5f6f24f94c1ec6af73fe205f8e31788ebb43"
+    }
+  },
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-24T01:51:27.182Z",
+  "updatedAt": "2019-04-24T01:55:43.342Z",
   "devdoc": {
     "methods": {}
   },

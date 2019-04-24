@@ -1,6 +1,4 @@
 import React, {Component} from "react";
-import web3 from "../web3";
-import trojanSecret from "../CharitableDonations";
 import {Container, Card} from "semantic-ui-react";
 import Charity from "./Charity";
 

@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import {Button, Header, Icon, Modal, Form, Message, Grid} from "semantic-ui-react";
-import web3 from "../web3";
-import trojanSecret from "../CharitableDonations";
 
 export default class Charity extends Component {
     state = {
@@ -41,14 +39,14 @@ export default class Charity extends Component {
 
     handleOpen = async () => {
         this.setState({modalOpen: true});
-        const numPlayers = await trojanSecret.methods.memberCount().call();
-        const players = this.convert(await trojanSecret.methods.listPlayers().call());
+        //const numPlayers = await trojanSecret.methods.memberCount().call();
+        //const players = this.convert(await trojanSecret.methods.listPlayers().call());
 
-        const receivedDetails = await trojanSecret.methods.getDescription(this.props.name).call();
+        //const receivedDetails = await trojanSecret.methods.getDescription(this.props.name).call();
 
 
         this.setState({
-            description: receivedDetails,
+            //description: receivedDetails,
         });
     };
 

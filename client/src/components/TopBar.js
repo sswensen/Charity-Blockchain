@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Menu, Header, Dropdown } from "semantic-ui-react";
-import trojanSecret from "../CharitableDonations";
 
 class TopBar extends Component {
   state = {
@@ -9,9 +8,9 @@ class TopBar extends Component {
   };
 
   async componentDidMount() {
-    const contractSymbol = await trojanSecret.methods.symbol().call();
-    const contractName = await trojanSecret.methods.name().call();
-    this.setState({ contractSymbol, contractName });
+    // const contractSymbol = await trojanSecret.methods.symbol().call();
+    // const contractName = await trojanSecret.methods.name().call();
+    // this.setState({ contractSymbol, contractName });
   }
 
   render() {

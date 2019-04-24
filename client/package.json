@@ -6,6 +6,7 @@
   "dependencies": {
     "ganache-cli": "^6.3.0",
     "mocha": "^5.2.0",
+    "drizzle": "^1.4.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-scripts": "2.1.5",
