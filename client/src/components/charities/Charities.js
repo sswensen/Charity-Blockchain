@@ -1,8 +1,9 @@
 import React, {Component} from "react";
-import Home from "./components/home/Home";
-import CardContainer from "./components/charities/Charities";
+import TopBar from "./TopBar";
+import {Container} from "semantic-ui-react";
+import CardContainer from "./CardContainer";
 
-class App extends Component {
+class Charities extends Component {
     state = { loading: true, drizzleState: null };
 
     componentDidMount() {
@@ -38,12 +39,26 @@ class App extends Component {
         );
 
         return (
-            <Home
-                drizzle={this.props.drizzle}
-                drizzleState={this.state.drizzleState}
-            />
+            <Container>
+                <TopBar/>
+                <h4>
+                    <p>This is a game deployed to the Rinkeby Blockchain.</p>
+                    <p>
+                        Actions to retrieve information should operate quickly.
+                        <br/>
+                        But please be aware, actions that push information to the blockchain may
+                        take about 15 seconds to complete.
+                    </p>
+                </h4>
+                <div>
+                    <CardContainer
+                        drizzle={this.props.drizzle}
+                        drizzleState={this.state.drizzleState}
+                    />
+                </div>
+            </Container>
         );
     }
 }
 
-export default App;
+export default Charities;
