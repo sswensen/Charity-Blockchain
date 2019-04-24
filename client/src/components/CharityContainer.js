@@ -1,6 +1,4 @@
 import React, {Component} from "react";
-import web3 from "../web3";
-import trojanSecret from "../CharitableDonations";
 import {Container, Card} from "semantic-ui-react";
 import Charity from "./Charity";
 import DonateToCharity from "./DonateToCharity";
@@ -13,11 +11,11 @@ export default class CharityContainer extends Component {
     };
 
     async loadDetails() {
-        const receivedDetails = await trojanSecret.methods.getDescription(this.props.name).call();
+        //const receivedDetails = await trojanSecret.methods.getDescription(this.props.name).call();
 
 
         this.setState({
-            description: receivedDetails,
+            //description: receivedDetails,
         });
     }
 

@@ -39,8 +39,8 @@ export default class DonateToCharity extends Component {
 
     handleOpen = async () => {
         this.setState({modalOpen: true});
-        const numPlayers = await trojanSecret.methods.memberCount().call();
-        const players = this.convert(await trojanSecret.methods.listPlayers().call());
+        //const numPlayers = await trojanSecret.methods.memberCount().call();
+        //const players = this.convert(await trojanSecret.methods.listPlayers().call());
     };
 
 

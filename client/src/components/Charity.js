@@ -57,9 +57,8 @@ export default class Charity extends Component {
         return (
             <Modal
                 trigger={
-                    <Button color="black" onClick={this.handleOpen}>
-                        Details
-                    </Button>
+                    <div className="ui basic blue button" onClick={this.handleOpen}>Details</div>
+
                 }
                 open={this.state.modalOpen}
                 onClose={this.handleClose}
@@ -72,22 +71,6 @@ export default class Charity extends Component {
                     <h3>
                         {this.props.description}
                     </h3>
-                    <Grid>
-                    </Grid>
-                    <div className="ui grid">
-                        <div className="four wide column">
-
-                        </div>
-                        <div className="four wide column">
-
-                        </div>
-                        <div className="four wide column">
-
-                        </div>
-                        <div className="four wide column">
-
-                        </div>
-                    </div>
 
                     <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
                         <Form.Field>
