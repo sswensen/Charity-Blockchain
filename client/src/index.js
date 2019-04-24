@@ -8,6 +8,7 @@ import './css/index.css';
 import { Drizzle } from "drizzle";
 
 import Charity from "./contracts/Charity.json";
+
 import Charities from "./components/charities/Charities";
 import NotFound from "./components/NotFound/NotFound";
 

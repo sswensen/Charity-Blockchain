@@ -1,13 +1,14 @@
 import React, {Component} from "react";
-import TopBar from "./TopBar";
-import {Container} from "semantic-ui-react";
+import {Button, Grid, Divider, Container, Image, List, Header, Icon, Menu, Responsive, Segment, Visibility} from "semantic-ui-react";
 import CardContainer from "./CardContainer";
+import PropTypes from "prop-types";
+
 
 class Charities extends Component {
-    state = { loading: true, drizzleState: null };
+    state = {loading: true, drizzleState: null};
 
     componentDidMount() {
-        const { drizzle } = this.props;
+        const {drizzle} = this.props;
 
         // subscribe to changes in the store
         this.unsubscribe = drizzle.store.subscribe(() => {
@@ -17,7 +18,7 @@ class Charities extends Component {
             // check to see if it's ready, if so, update local component state
             if (drizzleState.drizzleStatus.initialized) {
 
-                this.setState({ loading: false, drizzleState  });
+                this.setState({loading: false, drizzleState});
             }
         });
     };
@@ -39,26 +40,161 @@ class Charities extends Component {
         );
 
         return (
-            <Container>
-                <TopBar/>
-                <h4>
-                    <p>This is a game deployed to the Rinkeby Blockchain.</p>
-                    <p>
-                        Actions to retrieve information should operate quickly.
-                        <br/>
-                        But please be aware, actions that push information to the blockchain may
-                        take about 15 seconds to complete.
-                    </p>
-                </h4>
-                <div>
-                    <CardContainer
-                        drizzle={this.props.drizzle}
-                        drizzleState={this.state.drizzleState}
-                    />
-                </div>
-            </Container>
+            <ResponsiveContainer>
+                <Segment style={{padding: '5em 0em'}} vertical secondary>
+
+                    <Container>
+                        <div>
+                            <CardContainer
+                                drizzle={this.props.drizzle}
+                                drizzleState={this.state.drizzleState}
+                            />
+                        </div>
+                    </Container>
+
+                </Segment>
+
+                <Segment inverted vertical style={{padding: '4em 0em'}}>
+                    <Container>
+                        <Grid divided inverted stackable>
+                            <Grid.Row>
+                                <Grid.Column width={3}>
+                                    <Header inverted as='h4' content='About'/>
+                                    <List link inverted>
+                                        <List.Item as='a' href='/about'>Contact Us</List.Item>
+                                        <List.Item as='a' href='https://summitdrift.com'>SummitDrift</List.Item>
+                                    </List>
+                                </Grid.Column>
+                                <Grid.Column width={3}>
+                                    <Header inverted as='h4' content='Companies'/>
+                                    <List link inverted>
+                                        <List.Item as='a' href='https://scottswensen.com'>Scott Swensen Photography</List.Item>
+                                        <List.Item as='a' href='https://summitdrift.com'>SummitDrift</List.Item>
+                                    </List>
+                                </Grid.Column>
+                                <Grid.Column width={7}>
+                                    <Header as='h4' inverted>
+                                        Welcome to the Future
+                                    </Header>
+                                    <p>
+                                        A ReactJS application
+                                    </p>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
+                    </Container>
+                </Segment>
+            </ResponsiveContainer>
         );
     }
 }
 
 export default Charities;
+
+const getWidth = () => {
+    const isSSR = typeof window === 'undefined';
+
+    return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth
+};
+
+const PageHeading = ({mobile}) => (
+    <Container text>
+        <Header
+            as='h1'
+            content='Charities'
+            inverted
+            style={{
+                fontSize: mobile ? '2em' : '4em',
+                fontWeight: 'normal',
+                marginBottom: 0,
+                marginTop: mobile ? '1.5em' : '',
+            }}
+        />
+    </Container>
+);
+
+PageHeading.propTypes = {
+    mobile: PropTypes.bool,
+};
+
+/* Heads up!
+ * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
+ * It can be more complicated, but you can create really flexible markup.
+ */
+class DesktopContainer extends Component {
+    state = {};
+
+    hideFixedMenu = () => this.setState({fixed: false})
+    showFixedMenu = () => this.setState({fixed: true})
+
+    render() {
+        const {children} = this.props
+        const {fixed} = this.state
+
+        return (
+            <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth} className="full">
+                <Visibility
+                    once={false}
+                    onBottomPassed={this.showFixedMenu}
+                    onBottomPassedReverse={this.hideFixedMenu}
+                >
+                    <Segment
+                        className="full"
+                        inverted
+                        textAlign='center'
+                        style={{
+                            padding: '1em 0em',
+                            backgroundImage: "url(https://static1.squarespace.com/static/5b9845555ffd2046651ad901/5b986df070a6ad55d7a4c50f/5bc606a8ec212d219f564787/1555511911781/IMG_8501.jpg?format=2500w",
+                            backgroundPosition: 'center',
+                            backgroundSize: 'cover',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundAttachment: 'fixed'
+                        }}
+                        vertical
+                    >
+                        <Menu
+                            fixed={fixed ? 'top' : null}
+                            inverted={!fixed}
+                            pointing={!fixed}
+                            secondary={!fixed}
+                            size='large'
+                        >
+                            <Container>
+                                <a className="item" href="/">Home</a>
+                                <a className="item active" href='/charities'>Charities</a>
+                                <a className="item" href="/company">Company</a>
+                                <a className="item" href="/about">About</a>
+
+                                <Menu.Item position='right'>
+                                    <Button as='a' inverted={!fixed}>
+                                        Log in
+                                    </Button>
+                                    <Button as='a' inverted={!fixed} primary={fixed} style={{marginLeft: '0.5em'}}>
+                                        Sign Up
+                                    </Button>
+                                </Menu.Item>
+                            </Container>
+                        </Menu>
+                        <PageHeading />
+                    </Segment>
+                </Visibility>
+
+                {children}
+            </Responsive>
+        )
+    }
+}
+
+DesktopContainer.propTypes = {
+    children: PropTypes.node,
+}
+
+const ResponsiveContainer = ({children}) => (
+    <div className="full">
+        <DesktopContainer>{children}</DesktopContainer>
+    </div>
+)
+
+ResponsiveContainer.propTypes = {
+    children: PropTypes.node,
+}

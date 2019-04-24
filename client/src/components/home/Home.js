@@ -21,10 +21,10 @@ import {Link} from "react-router-dom";
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
 // For more advanced usage please check Responsive docs under the "Usage" section.
 const getWidth = () => {
-  const isSSR = typeof window === 'undefined'
+  const isSSR = typeof window === 'undefined';
 
   return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth
-}
+};
 
 /* eslint-disable react/no-multi-comp */
 /* Heads up! HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
@@ -114,18 +114,10 @@ class DesktopContainer extends Component {
                 {/*<Menu.Item><Link to="/company">Company</Link></Menu.Item>*/}
                 {/*<Menu.Item><Link to="/about">About</Link></Menu.Item>*/}
 
-                      <a className="item active" href="/">
-                          Home
-                      </a>
-                      <a className="item" href='/charities'>
-                          Charities
-                      </a>
-                      <a className="item" href="/company">
-                          Company
-                      </a>
-                      <a className="item" href="/about">
-                          About
-                      </a>
+                <a className="item active" href="/">Home</a>
+                <a className="item" href='/charities'>Charities</a>
+                <a className="item" href="/company">Company</a>
+                <a className="item" href="/about">About</a>
 
                 <Menu.Item position='right'>
                   <Button as='a' inverted={!fixed}>
