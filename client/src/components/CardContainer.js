@@ -36,7 +36,6 @@ class CardContainer extends Component {
         //     numCharities: this.convert(receivedCharityNames)
         // });
 
-        this.convert = this.bind.convert(this);
     };
 
     render() {
