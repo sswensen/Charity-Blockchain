@@ -8,7 +8,6 @@ import {
   Header,
   Icon,
   Image,
-  List,
   Menu,
   Responsive,
   Segment,
@@ -16,6 +15,7 @@ import {
   Visibility,
 } from 'semantic-ui-react'
 import {Link} from "react-router-dom";
+import Footer from "../footer/Footer";
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -45,7 +45,7 @@ const HomepageHeading = ({ mobile }) => (
     />
     <Header
       as='h2'
-      content='View and track where your donations go without worrying about misuse'
+      content='View and track donations without worrying about misuse'
       inverted
       style={{
         fontSize: mobile ? '1.5em' : '1.7em',
@@ -69,7 +69,7 @@ HomepageHeading.propTypes = {
  * It can be more complicated, but you can create really flexible markup.
  */
 class DesktopContainer extends Component {
-  state = {}
+  state = {};
 
   hideFixedMenu = () => this.setState({ fixed: false })
   showFixedMenu = () => this.setState({ fixed: true })
@@ -316,37 +316,7 @@ const Home = () => (
         </Button>
       </Container>
     </Segment>
-
-    <Segment inverted vertical style={{ padding: '4em 0em' }}>
-      <Container>
-        <Grid divided inverted stackable>
-          <Grid.Row>
-            <Grid.Column width={3}>
-              <Header inverted as='h4' content='About' />
-              <List link inverted>
-                <List.Item as='a' href='/about'>Contact Us</List.Item>
-                <List.Item as='a' href='https://summitdrift.com'>SummitDrift</List.Item>
-              </List>
-            </Grid.Column>
-            <Grid.Column width={3}>
-              <Header inverted as='h4' content='Companies' />
-              <List link inverted>
-                <List.Item as='a' href='https://scottswensen.com'>Scott Swensen Photography</List.Item>
-                <List.Item as='a' href='https://summitdrift.com'>SummitDrift</List.Item>
-              </List>
-            </Grid.Column>
-            <Grid.Column width={7}>
-              <Header as='h4' inverted>
-                Welcome to the Future
-              </Header>
-              <p>
-                A ReactJS application
-              </p>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Container>
-    </Segment>
+    <Footer />
   </ResponsiveContainer>
 )
 

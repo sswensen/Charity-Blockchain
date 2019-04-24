@@ -1,7 +1,8 @@
 import React, {Component} from "react";
-import {Button, Grid, Divider, Container, Image, List, Header, Icon, Menu, Responsive, Segment, Visibility} from "semantic-ui-react";
+import {Button, Container, Header, Menu, Responsive, Segment, Visibility} from "semantic-ui-react";
 import CardContainer from "./CardContainer";
 import PropTypes from "prop-types";
+import Footer from "../footer/Footer";
 
 
 class Charities extends Component {
@@ -53,37 +54,7 @@ class Charities extends Component {
                     </Container>
 
                 </Segment>
-
-                <Segment inverted vertical style={{padding: '4em 0em'}}>
-                    <Container>
-                        <Grid divided inverted stackable>
-                            <Grid.Row>
-                                <Grid.Column width={3}>
-                                    <Header inverted as='h4' content='About'/>
-                                    <List link inverted>
-                                        <List.Item as='a' href='/about'>Contact Us</List.Item>
-                                        <List.Item as='a' href='https://summitdrift.com'>SummitDrift</List.Item>
-                                    </List>
-                                </Grid.Column>
-                                <Grid.Column width={3}>
-                                    <Header inverted as='h4' content='Companies'/>
-                                    <List link inverted>
-                                        <List.Item as='a' href='https://scottswensen.com'>Scott Swensen Photography</List.Item>
-                                        <List.Item as='a' href='https://summitdrift.com'>SummitDrift</List.Item>
-                                    </List>
-                                </Grid.Column>
-                                <Grid.Column width={7}>
-                                    <Header as='h4' inverted>
-                                        Welcome to the Future
-                                    </Header>
-                                    <p>
-                                        A ReactJS application
-                                    </p>
-                                </Grid.Column>
-                            </Grid.Row>
-                        </Grid>
-                    </Container>
-                </Segment>
+                <Footer />
             </ResponsiveContainer>
         );
     }
