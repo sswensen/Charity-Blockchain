@@ -34,18 +34,18 @@ const HomepageHeading = ({ mobile }) => (
   <Container text>
     <Header
       as='h1'
-      content='Imagine-a-Company'
+      content='A Transparent Charity'
       inverted
       style={{
         fontSize: mobile ? '2em' : '4em',
         fontWeight: 'normal',
         marginBottom: 0,
-        marginTop: mobile ? '1.5em' : '3em',
+        marginTop: mobile ? '1.5em' : '40%',
       }}
     />
     <Header
       as='h2'
-      content='Do whatever you want when you want to.'
+      content='View and track where your donations go without worrying about misuse'
       inverted
       style={{
         fontSize: mobile ? '1.5em' : '1.7em',
@@ -79,16 +79,24 @@ class DesktopContainer extends Component {
     const { fixed } = this.state
 
     return (
-      <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
+      <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth} className="full">
         <Visibility
+            className="full"
           once={false}
           onBottomPassed={this.showFixedMenu}
           onBottomPassedReverse={this.hideFixedMenu}
         >
           <Segment
+              className="full"
             inverted
             textAlign='center'
-            style={{ minHeight: 700, padding: '1em 0em' }}
+            style={{ minHeight: 800, padding: '1em 0em',
+              backgroundImage: "url(https://static1.squarespace.com/static/5b9845555ffd2046651ad901/5b986df070a6ad55d7a4c50f/5bc606a8ec212d219f564787/1555511911781/IMG_8501.jpg?format=2500w",
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundAttachment: 'fixed'
+            }}
             vertical
           >
             <Menu
@@ -99,12 +107,26 @@ class DesktopContainer extends Component {
               size='large'
             >
               <Container>
-                <Menu.Item active>
-                  <Link to="/">Home</Link>
-                </Menu.Item>
-                <Menu.Item><Link to="/charities">Charities</Link></Menu.Item>
-                <Menu.Item><Link to="/company">Company</Link></Menu.Item>
-                <Menu.Item><Link to="/about">About</Link></Menu.Item>
+                {/*<Menu.Item active>*/}
+                  {/*<Link to="/">Home</Link>*/}
+                {/*</Menu.Item>*/}
+                {/*<Menu.Item><Link to="/charities">Charities</Link></Menu.Item>*/}
+                {/*<Menu.Item><Link to="/company">Company</Link></Menu.Item>*/}
+                {/*<Menu.Item><Link to="/about">About</Link></Menu.Item>*/}
+
+                      <a className="item active" href="/">
+                          Home
+                      </a>
+                      <a className="item" href='/charities'>
+                          Charities
+                      </a>
+                      <a className="item" href="/company">
+                          Company
+                      </a>
+                      <a className="item" href="/about">
+                          About
+                      </a>
+
                 <Menu.Item position='right'>
                   <Button as='a' inverted={!fixed}>
                     Log in
@@ -202,7 +224,7 @@ MobileContainer.propTypes = {
 }
 
 const ResponsiveContainer = ({ children }) => (
-  <div>
+  <div className="full">
     <DesktopContainer>{children}</DesktopContainer>
     <MobileContainer>{children}</MobileContainer>
   </div>
@@ -214,16 +236,15 @@ ResponsiveContainer.propTypes = {
 
 const Home = () => (
   <ResponsiveContainer>
-    <Segment style={{ padding: '8em 0em' }} vertical>
+    <Segment style={{ padding: '5em 0em' }} vertical>
       <Grid container stackable verticalAlign='middle'>
         <Grid.Row>
-          <Grid.Column width={8}>
+          <Grid.Column width={10}>
             <Header as='h3' style={{ fontSize: '2em' }}>
-              We Help Companies and Companions
+              We Make Your Dreams Come True
             </Header>
             <p style={{ fontSize: '1.33em' }}>
               We can give your company superpowers to do things that they never thought possible.
-              Let us delight your customers and empower your needs... through pure data analytics.
             </p>
             <Header as='h3' style={{ fontSize: '2em' }}>
               We Make Bananas That Can Dance
@@ -234,14 +255,14 @@ const Home = () => (
             </p>
           </Grid.Column>
           <Grid.Column floated='right' width={6}>
-            <Image bordered rounded size='large' src='/images/wireframe/white-image.png' />
+            <Image rounded size='large' src='https://www.ethereum.org/images/logos/ETHEREUM-LOGO_PORTRAIT_Black_small.png' />
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
-          <Grid.Column textAlign='center'>
-            <Button size='huge'>Check Them Out</Button>
-          </Grid.Column>
-        </Grid.Row>
+        {/*<Grid.Row>*/}
+          {/*<Grid.Column textAlign='center'>*/}
+            {/*<Button size='huge'>Check Them Out</Button>*/}
+          {/*</Grid.Column>*/}
+        {/*</Grid.Row>*/}
       </Grid>
     </Segment>
 
@@ -259,15 +280,15 @@ const Home = () => (
               "I shouldn't have gone with their competitor."
             </Header>
             <p style={{ fontSize: '1.33em' }}>
-              <Image avatar src='/images/avatar/large/nan.jpg' />
-              <b>Nan</b> Chief Fun Officer Acme Toys
+                <i className="chart bar icon" />
+                <b>Nan</b> Chief Fun Officer Acme Toys
             </p>
           </Grid.Column>
         </Grid.Row>
       </Grid>
     </Segment>
 
-    <Segment style={{ padding: '8em 0em' }} vertical>
+    <Segment style={{ padding: '5em 0em' }} vertical>
       <Container text>
         <Header as='h3' style={{ fontSize: '2em' }}>
           Breaking The Grid, Grabs Your Attention
@@ -287,7 +308,7 @@ const Home = () => (
           horizontal
           style={{ margin: '3em 0em', textTransform: 'uppercase' }}
         >
-          <a href='#'>Case Studies</a>
+          <a href='/'>Case Studies</a>
         </Divider>
 
         <Header as='h3' style={{ fontSize: '2em' }}>
@@ -304,34 +325,30 @@ const Home = () => (
       </Container>
     </Segment>
 
-    <Segment inverted vertical style={{ padding: '5em 0em' }}>
+    <Segment inverted vertical style={{ padding: '4em 0em' }}>
       <Container>
         <Grid divided inverted stackable>
           <Grid.Row>
             <Grid.Column width={3}>
               <Header inverted as='h4' content='About' />
               <List link inverted>
-                <List.Item as='a'>Sitemap</List.Item>
-                <List.Item as='a'>Contact Us</List.Item>
-                <List.Item as='a'>Religious Ceremonies</List.Item>
-                <List.Item as='a'>Gazebo Plans</List.Item>
+                <List.Item as='a' href='/about'>Contact Us</List.Item>
+                <List.Item as='a' href='https://summitdrift.com'>SummitDrift</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={3}>
-              <Header inverted as='h4' content='Services' />
+              <Header inverted as='h4' content='Companies' />
               <List link inverted>
-                <List.Item as='a'>Banana Pre-Order</List.Item>
-                <List.Item as='a'>DNA FAQ</List.Item>
-                <List.Item as='a'>How To Access</List.Item>
-                <List.Item as='a'>Favorite X-Men</List.Item>
+                <List.Item as='a' href='https://scottswensen.com'>Scott Swensen Photography</List.Item>
+                <List.Item as='a' href='https://summitdrift.com'>SummitDrift</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>
               <Header as='h4' inverted>
-                Footer Header
+                Welcome to the Future
               </Header>
               <p>
-                Extra space for a call to action inside the footer that could help re-engage users.
+                A ReactJS application
               </p>
             </Grid.Column>
           </Grid.Row>

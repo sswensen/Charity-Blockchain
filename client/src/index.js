@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css';
 import './css/index.css';
 
@@ -33,7 +33,7 @@ const drizzle = new Drizzle(options);
 
 const routing = (
     <Router>
-        <div>
+        <div className='full'>
             {/*<ul>*/}
                 {/*<li>*/}
                     {/*<Link to="/">Home</Link>*/}

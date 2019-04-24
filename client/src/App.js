@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import Home from "./components/home/Home";
-import CardContainer from "./components/charities/Charities";
 
 class App extends Component {
     state = { loading: true, drizzleState: null };
@@ -27,7 +26,7 @@ class App extends Component {
 
     render() {
         if (this.state.loading) return (
-            <div className="ui segment wrapper">
+            <div className="ui segment wrapper absolute">
                 <div className="ui active dimmer">
                     <div className="ui massive text loader">Loading Web3 Interface...</div>
                 </div>
@@ -39,6 +38,7 @@ class App extends Component {
 
         return (
             <Home
+                className="wrapper"
                 drizzle={this.props.drizzle}
                 drizzleState={this.state.drizzleState}
             />
