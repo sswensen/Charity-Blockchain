@@ -4,21 +4,22 @@ import React, {Component} from "react";
 class Footer extends Component {
     render() {
         return (
-            <Segment inverted vertical style={{ padding: '4em 0em' }}>
+            <Segment inverted vertical style={{padding: '4em 0em'}}>
                 <Container>
                     <Grid divided inverted stackable>
                         <Grid.Row>
                             <Grid.Column width={3}>
-                                <Header inverted as='h4' content='About' />
+                                <Header inverted as='h4' content='About'/>
                                 <List link inverted>
                                     <List.Item as='a' href='/about'>Contact Us</List.Item>
                                     <List.Item as='a' href='https://summitdrift.com'>SummitDrift</List.Item>
                                 </List>
                             </Grid.Column>
                             <Grid.Column width={3}>
-                                <Header inverted as='h4' content='Companies' />
+                                <Header inverted as='h4' content='Companies'/>
                                 <List link inverted>
-                                    <List.Item as='a' href='https://scottswensen.com'>Scott Swensen Photography</List.Item>
+                                    <List.Item as='a' href='https://scottswensen.com'>Scott Swensen
+                                        Photography</List.Item>
                                     <List.Item as='a' href='https://summitdrift.com'>SummitDrift</List.Item>
                                 </List>
                             </Grid.Column>

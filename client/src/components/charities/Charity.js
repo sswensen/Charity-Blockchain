@@ -56,7 +56,7 @@ export default class Charity extends Component {
                         <Message error header="Oops!" content={this.state.errorMessage} />
                         <div className="ui buttons">
                             <button className="ui button active" loading={this.state.loading} onClick={this.handleClose}>Cancel</button>
-                            <div className="or"></div>
+                            <div className="or"/>
                             <button className="ui positive button" loading={this.state.loading} type="submit">Donate</button>
                         </div>
                     </Form>

@@ -51,7 +51,7 @@ const HomepageHeading = ({mobile}) => (
         />
         <Button primary size='huge' href="/">
             Save Me
-            <Icon style={{paddingLeft: 10}} name='undo'/>
+            <Icon style={{paddingLeft: 12}} name='undo'/>
         </Button>
     </Container>
 );

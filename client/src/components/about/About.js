@@ -223,14 +223,14 @@ class DesktopContainer extends Component {
 
 DesktopContainer.propTypes = {
     children: PropTypes.node,
-}
+};
 
 const ResponsiveContainer = ({children}) => (
     <div className="full">
         <DesktopContainer>{children}</DesktopContainer>
     </div>
-)
+);
 
 ResponsiveContainer.propTypes = {
     children: PropTypes.node,
-}
+};

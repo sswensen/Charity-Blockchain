@@ -33,7 +33,7 @@ export default class DonateToCharity extends Component {
                 <Modal.Content>
 
                     <h4>{this.props.name}</h4>
-                    <br />
+                    <br/>
                     <h3>
                         {this.props.description}
                     </h3>
@@ -43,20 +43,23 @@ export default class DonateToCharity extends Component {
                             <label>Donation amount:</label>
                             <input
                                 placeholder="Name"
-                                onChange={event => this.setState({ value: event.target.value })}
+                                onChange={event => this.setState({value: event.target.value})}
                             />
                         </Form.Field>
-                        <Message error header="Oops!" content={this.state.errorMessage} />
+                        <Message error header="Oops!" content={this.state.errorMessage}/>
                         <div className="ui buttons">
-                            <button className="ui button active" loading={this.state.loading} onClick={this.handleClose}>Cancel</button>
-                            <div className="or"></div>
-                            <button className="ui positive button" loading={this.state.loading} type="submit">Donate</button>
+                            <button className="ui button active" loading={this.state.loading}
+                                    onClick={this.handleClose}>Cancel
+                            </button>
+                            <div className="or"/>
+                            <button className="ui positive button" loading={this.state.loading} type="submit">Donate
+                            </button>
                         </div>
                     </Form>
                 </Modal.Content>
                 <Modal.Actions>
                     <Button color="red" onClick={this.handleClose} inverted>
-                        <Icon name="cancel" /> Close
+                        <Icon name="cancel"/> Close
                     </Button>
                 </Modal.Actions>
             </Modal>
