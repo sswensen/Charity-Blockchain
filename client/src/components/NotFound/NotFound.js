@@ -99,7 +99,7 @@ class DesktopContainer extends Component {
                             size='large'
                         >
                             <Container>
-                                <a className="item active" href="/">Home</a>
+                                <a className="item" href="/">Home</a>
                                 <a className="item" href='/charities'>Charities</a>
                                 <a className="item" href="/company">Company</a>
                                 <a className="item" href="/about">About</a>
@@ -152,12 +152,7 @@ class MobileContainer extends Component {
                     vertical
                     visible={sidebarOpened}
                 >
-                    <Menu.Item as='a' active>
-                        Home
-                    </Menu.Item>
-                    <Menu.Item active>
-                        <Link to="/">Home</Link>
-                    </Menu.Item>
+                    <Menu.Item><Link to="/">Home</Link></Menu.Item>
                     <Menu.Item><Link to="/charities">Charities</Link></Menu.Item>
                     <Menu.Item><Link to="/company">Company</Link></Menu.Item>
                     <Menu.Item><Link to="/about">About</Link></Menu.Item>

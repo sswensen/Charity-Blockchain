@@ -11,6 +11,7 @@ import Charity from "./contracts/Charity.json";
 
 import Charities from "./components/charities/Charities";
 import NotFound from "./components/NotFound/NotFound";
+import About from "./components/about/About";
 
 // let drizzle know what contracts we want and how to access our test blockchain
 const options = {
@@ -54,6 +55,10 @@ const routing = (
                 <Route
                     path='/charities'
                     component={() => <Charities drizzle={drizzle} />}
+                />
+                <Route
+                    path='/about'
+                    component={() => <About />}
                 />
                 <Route component={NotFound} />
                 {/*<Route path="/users/:id" component={Users} />*/}
