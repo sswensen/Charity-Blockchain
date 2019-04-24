@@ -11,8 +11,10 @@ class CardContainer extends Component {
             "Charity Name One",
             "Charity Name Two"
         ],
-        charityDescriptions: [],
-        numCharities: 0
+        charityDescriptions: [
+            "Charity One Description",
+            "Charity Two Description"
+        ],
     };
 
     componentDidMount() {

@@ -1,13 +1,25 @@
 import React, {Component} from "react";
+import web3 from "../web3";
+import trojanSecret from "../CharitableDonations";
 import {Container, Card} from "semantic-ui-react";
 import Charity from "./Charity";
+import DonateToCharity from "./DonateToCharity";
 
 export default class CharityContainer extends Component {
     state = {
         name: "",
-        description: "",
+        description: "This is a test",
         balance: 0
     };
+
+    async loadDetails() {
+        const receivedDetails = await trojanSecret.methods.getDescription(this.props.name).call();
+
+
+        this.setState({
+            description: receivedDetails,
+        });
+    }
 
     render() {
         return (
@@ -19,12 +31,12 @@ export default class CharityContainer extends Component {
                     </div>
                 </Card.Content>
                 <Card.Content>
-                    <Charity name={this.props.name}></Charity>
+                    {this.state.description}
                 </Card.Content>
                 <div className="extra content">
                     <div className="ui two buttons">
-                        <div className="ui basic green button">Donate</div>
-                        <div className="ui basic orange button">Details</div>
+                        <DonateToCharity name={this.props.name}/>
+                        <Charity name={this.props.name}/>
                     </div>
                 </div>
             </Card>
