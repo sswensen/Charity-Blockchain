@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Button, Header, Icon, Modal, Form, Message, Grid} from "semantic-ui-react";
+import {Button, Header, Icon, Modal, Form, Message} from "semantic-ui-react";
 
 export default class Charity extends Component {
     state = {
@@ -10,37 +10,10 @@ export default class Charity extends Component {
         errorMessage: "",
     };
 
-    convert(hex) {
-        //console.log(hex);
-        try {
-            var str = '';
-            for(var i = 0; i < hex.length; i += 2) {
-                var v = parseInt(hex.substr(i, 2), 16);
-                if(v) str += String.fromCharCode(v);
-            }
-
-            let params = [];
-            let res = "";
-            for(var i = 0; i <= str.length; i++) {
-                if(str.charCodeAt(i) > 31) {
-                    res = res + str[i];
-                } else {
-                    params.push(res);
-                    res = "";
-                }
-            }
-            params.pop();
-
-            return params;
-        } catch(e) {
-            return [];
-        }
-    };
-
     handleOpen = async () => {
         this.setState({modalOpen: true});
         //const numPlayers = await trojanSecret.methods.memberCount().call();
-        //const players = this.convert(await trojanSecret.methods.listPlayers().call());
+        //const players = this.props.convert(await trojanSecret.methods.listPlayers().call());
 
         //const receivedDetails = await trojanSecret.methods.getDescription(this.props.name).call();
 

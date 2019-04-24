@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Container, Card} from "semantic-ui-react";
+import {Card} from "semantic-ui-react";
 import CharityContainer from "./CharityContainer";
 
 class CardContainer extends Component {
@@ -35,6 +35,8 @@ class CardContainer extends Component {
         //     charityNames: receivedNumCharities,
         //     numCharities: this.convert(receivedCharityNames)
         // });
+
+        this.convert = this.bind.convert(this);
     };
 
     render() {
@@ -42,7 +44,7 @@ class CardContainer extends Component {
                 <div>
                     <Card.Group>
                         {this.state.charityNames.map((name) =>
-                            <CharityContainer key={name} name={name} />
+                            <CharityContainer key={name} name={name} convert={this.convert} />
                         )}
                     </Card.Group>
 
@@ -61,9 +63,9 @@ class CardContainer extends Component {
 
             let params = [];
             let res = "";
-            for(var i = 0; i <= str.length; i++) {
-                if(str.charCodeAt(i) > 31) {
-                    res = res + str[i];
+            for(var j = 0; j <= str.length; j++) {
+                if(str.charCodeAt(j) > 31) {
+                    res = res + str[j];
                 } else {
                     params.push(res);
                     res = "";

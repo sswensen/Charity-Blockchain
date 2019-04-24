@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Container, Card} from "semantic-ui-react";
+import {Card} from "semantic-ui-react";
 import Charity from "./Charity";
 import DonateToCharity from "./DonateToCharity";
 
@@ -33,8 +33,8 @@ export default class CharityContainer extends Component {
                 </Card.Content>
                 <div className="extra content">
                     <div className="ui two buttons">
-                        <DonateToCharity name={this.props.name}/>
-                        <Charity name={this.props.name}/>
+                        <DonateToCharity name={this.props.name} convert={this.props.convert}/>
+                        <Charity name={this.props.name} convert={this.props.convert}/>
                     </div>
                 </div>
             </Card>

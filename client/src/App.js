@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import TopBar from "./components/TopBar";
-import {Container, Card} from "semantic-ui-react";
+import {Container} from "semantic-ui-react";
 import CardContainer from "./components/CardContainer";
 
 class App extends Component {
