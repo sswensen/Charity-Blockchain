@@ -11,6 +11,7 @@ contract Charity {
 	string[] transactionDescriptions;
 	uint transactionCount;
 	//Helpers h;
+	string amountSTR;
 
 	enum charity_state {
 		STARTED, FINISHED
@@ -102,24 +103,32 @@ contract Charity {
 		}
 		balance += msg.value;
 
-		transact(msg.value, toAsciiString(msg.sender));
+        amountSTR = strConcat("+",uint2str(msg.value) ,"");
+
+		transact(amountSTR, toAsciiString(msg.sender));
 
 		emit DonateEvent(msg.sender, msg.value);
 
 		return true;
 	}
 
-
 	function withdrawl(uint amount, string reason, address sender) public only_owner(sender) returns (bool) {
 		require(balance >= amount);
-		transact(amount, reason);
+		//add a - to the amount of ether
+		amountSTR = strConcat("-",uint2str(amount) ,"");
+	  transact(amountSTR, reason);
+		//
 		msg.sender.transfer(amount);
+		balance = balance - amount;
 		emit WithdrawalEvent(msg.sender, amount, reason);
 		return true;
 	}
 
-	function transact(uint amount, string reason) public {
-		transactionAmounts.push(uint2str(amount));
+
+
+
+	function transact(string amount, string reason) public {
+		transactionAmounts.push(amount);
 		transactionDescriptions.push(reason);
 		transactionCount++;
 	}
