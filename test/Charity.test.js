@@ -1,50 +1,69 @@
 
+const {balance, ether}= require('openzeppelin-test-helpers');
+
 // Dose not work
+var Charity = artifacts.require('Charity');
+//
+// const ether = 10**18; // 1 ether = 1000000000000000000 wei
+//
+// contract("SimpleCharity - basic initialization", function(accounts) {
+//   const alice = accounts[1];
+//
+//   const charity = await Charity("NewCharity", "hello").deploy();
+//
+//   it("should have a name: NewCharity", async () => {
+//       let name = await charity.getCharityName();
+//       assert.equal("NewCharity", response);
+//     });
+//
+//   it("should have a Description: hello ", async () => {
+//       let des = await charity.getCharityDescription();
+//       assert.equal('hello', des);
+//   });
+//
+// });
 
-const Charity = artifacts.require('Charity');
+contract('Charity', accounts => {
+  var charity;
+  //const ether = 10**18;
+      async function deployContract(){
+        charity = await Charity.new("Two", "hello");
+      };
 
-contract('Charity', function () {
-  async function deployContract(){
-    this.contract = await Charity.new("One", "We save puppies");
-  };
+      describe('Get Charity Info', function()  {
+        before(deployContract);
 
-  describe('Get Charity Info', function()  {
-    before(deployContract);
+        it('Charity Name : Two ' , async function(){
+          let response = await         charity.getCharityName();
+          assert.equal("Two", response);
+        });
 
-    it('Charity Name should be One ' , async function(){
-      let response = await this.contract.getCharityName();
-      assert.equal("One", response);
-    });
+        it('Charity description : hello ' , async function(){
+          let response = await charity.getCharityDescription();
+          //console.log("Charity description=", response);
+          assert.equal('hello', response);
+        });
 
-    it('Charity description should be We save puppies ' , async function(){
-      let response = await this.contract.getCharityDescription();
-      console.log("Charity description=", response);
-      assert.equal('We save puppies', response);
-    });
-
-    it('Charity balance should be Zero ' , async function(){
-      let response = await this.contract.getCharityBalance();
-      console.log("getCharityBalance = "+response);
-      assert.equal(0, response);
-    });
-
-    it('Charity Can be Donated to' , async function(){
-      let response = await this.contract.donate(10, '0x1cCB5Dbd7EA1386b67B50e23332e963483D80ED1',
-          {from: 0x5fcc042DC53E6F2d2E8FF7feecE1cF2A30328fD5, to: this.contract.Address, value: 10 });
-      //let response = await this.contract.donate.send(1, 0x1cCB5Dbd7EA1386b67B50e23332e963483D80ED1);
-      console.log("donate response = "+response);
-      assert.equal(true, response);
-    });
-
-    it('Charity balance should be 10' , async function(){
-      let response = await this.contract.getCharityBalance();
-      console.log("this.contract.balance= "+this.contract.balance);
-      console.log("getCharityBalance = "+response);
-      assert.equal(10 ,response);
-    });
+        it('Before Donate: Charity balance = 0' , async () => {
+             
+           let response = await       charity.getCharityBalance();
+           assert.equal(0 ,response);
+        });
 
 
-  });
+
+        it('Charity 2: AFTER Donate Charity = 10' , async () => {
+          var didDonate = await charity.donate({from: accounts[0], value: ether('10')});
+          //console.log("didDonate ",didDonate);
+
+          let response = await       charity.getCharityBalance();
+          //console.log("charity.balance= "+balance(charity.address));
+          console.log("getCharityBalance = "+response);
+          assert.equal(ether('10').toString() ,response.toString());
+        });
 
 
-});// end of contract('CharitableDonations', function () {
+
+
+    });
+});
