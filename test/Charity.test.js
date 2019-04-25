@@ -46,13 +46,13 @@ contract('Charity', accounts => {
 
         it('Before Donate: Charity balance = 0' , async () => {
              
-           let response = await       charity.getCharityBalance();
+           let response = await      charity.getCharityBalance();
            assert.equal(0 ,response);
         });
 
 
 
-        it('Charity 2: AFTER Donate Charity = 10' , async () => {
+        it('Charity 2: AFTER Donate Charity = 5' , async () => {
           var didDonate = await charity.donate({from: accounts[0], value: ether('10')});
           //console.log("didDonate ",didDonate);
 
@@ -60,6 +60,25 @@ contract('Charity', accounts => {
           //console.log("charity.balance= "+balance(charity.address));
           console.log("getCharityBalance = "+response);
           assert.equal(ether('10').toString() ,response.toString());
+
+        });
+
+        it('Charity 2: getOwner' , async () => {
+          var owner = await charity.getOwner();
+        //  console.log(owner);
+          //0x5B74afb60E1314D631CfBE1121d2419fCC0eeF1D
+          assert.equal("0x5B74afb60E1314D631CfBE1121d2419fCC0eeF1D" ,owner);
+
+        });
+
+        it('Charity 2: Withdrawls (ONLY OWNER)' , async () => {
+
+          //0x5B74afb60E1314D631CfBE1121d2419fCC0eeF1D
+          var withdrawl = await charity.withdrawl(ether('5'),"I need money", "0x5B74afb60E1314D631CfBE1121d2419fCC0eeF1D");
+          //console.log(withdrawl);
+          let balance = await charity.getCharityBalance();
+
+          assert.equal(ether('5').toString() , balance.toString());
         });
 
 
