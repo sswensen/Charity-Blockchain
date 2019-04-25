@@ -8,13 +8,55 @@ class CardContainer extends Component {
         message: "",
 
         charityNames: [
-            "Charity Name One",
-            "Charity Name Two"
+            "Scott Swensen Foundation",
+            "Claire Goldstein Foundation",
+            "Kenny Nguyen Foundation",
+            "Chipotle For All",
+            "Wounded Warriors",
+            "Blockchain Support Group",
         ],
         charityDescriptions: [
-            "Charity One Description",
-            "Charity Two Description"
+            "A foundation for the success of Scott in his CS 481a3 class.",
+            "A foundation for the success of Claire in his CS 481a3 class.",
+            "A foundation for the success of Kenny in his CS 481a3 class.",
+            "The one and only, best and greatest burrito-birthing company. Long live the guacamole",
+            "Support our returning troops.",
+            "Help our team afford the cups of coffee we need to stay up every night to finish this project.",
         ],
+
+        charities: [
+            {
+                "index": 0,
+                "name": "Scott Swensen Foundation",
+                "description": "A foundation for the success of Scott in his CS 481a3 class."
+            },
+            {
+                "index": 1,
+                "name": "Claire Goldstein Foundation",
+                "description": "A foundation for the success of Claire in his CS 481a3 class."
+            },
+            {
+                "index": 2,
+                "name": "Kenny Nguyen Foundation",
+                "description": "A foundation for the success of Kenny in his CS 481a3 class."
+            },
+            {
+                "index": 3,
+                "name": "Chipotle For All",
+                "description": "The one and only, best and greatest burrito-birthing company. Long live the guacamole"
+            },
+            {
+                "index": 4,
+                "name": "Blockchain Support Group",
+                "description": "Help our team afford the cups of coffee we need to stay up every night to finish this project."
+            },
+            {
+                "index": 5,
+                "name": "Wounded Warriors",
+                "description": "Support our returning troops. Go America. Why is this card formatting differently."
+            }
+
+        ]
     };
 
     componentDidMount() {
@@ -39,14 +81,14 @@ class CardContainer extends Component {
 
     render() {
         return (
-                <div>
-                    <Card.Group>
-                        {this.state.charityNames.map((name) =>
-                            <CharityContainer key={name} name={name} convert={this.convert} />
-                        )}
-                    </Card.Group>
-
+            <div>
+                <div className="ui three cards">
+                    {this.state.charities.map((c) =>
+                        <CharityContainer key={c.index} charity={c} convert={this.convert}/>
+                    )}
                 </div>
+
+            </div>
         );
     };
 
@@ -54,15 +96,15 @@ class CardContainer extends Component {
         //console.log(hex);
         try {
             var str = '';
-            for(var i = 0; i < hex.length; i += 2) {
+            for (var i = 0; i < hex.length; i += 2) {
                 var v = parseInt(hex.substr(i, 2), 16);
-                if(v) str += String.fromCharCode(v);
+                if (v) str += String.fromCharCode(v);
             }
 
             let params = [];
             let res = "";
-            for(var j = 0; j <= str.length; j++) {
-                if(str.charCodeAt(j) > 31) {
+            for (var j = 0; j <= str.length; j++) {
+                if (str.charCodeAt(j) > 31) {
                     res = res + str[j];
                 } else {
                     params.push(res);
@@ -72,7 +114,7 @@ class CardContainer extends Component {
             params.pop();
 
             return params;
-        } catch(e) {
+        } catch (e) {
             return [];
         }
     };

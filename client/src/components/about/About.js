@@ -11,8 +11,6 @@ class About extends Component {
                 <Segment style={{padding: '5em 0em'}} vertical secondary>
                     <Container>
                         <div>
-
-
                             <div className="ui three column grid">
                                 <div className="column">
                                     {/* Scott */}
