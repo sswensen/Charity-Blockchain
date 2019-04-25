@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Card} from "semantic-ui-react";
 import CharityContainer from "./CharityContainer";
 
 class CardContainer extends Component {
