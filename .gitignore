@@ -30,4 +30,5 @@ npm-debug.log
 /*.env
 
 # Production
-**/build
+**/contracts/*.json
+**/client/build
