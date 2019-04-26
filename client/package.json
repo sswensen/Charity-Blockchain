@@ -4,9 +4,11 @@
   "private": true,
   "homepage": "http://www.cs.colostate.edu/cs481a3/public_html/trojan/",
   "dependencies": {
+    "chai": "^4.2.0",
+    "drizzle": "^1.4.0",
     "ganache-cli": "^6.3.0",
     "mocha": "^5.2.0",
-    "drizzle": "^1.4.0",
+    "openzeppelin-test-helpers": "^0.3.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-scripts": "2.1.5",
