@@ -3,6 +3,7 @@ cd ./client/
 rm -r node_modules
 npm install
 cd ..
+rm -r node_modules
 npm install
 truffle compile
 truffle migrate --reset
