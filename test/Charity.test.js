@@ -31,7 +31,6 @@ contract('Charity', accounts => {
            return params;
        }
 
-
       describe('Get Charity Info', function()  {
         before(deployContract);
 
@@ -99,9 +98,5 @@ contract('Charity', accounts => {
         //   assert.equal("I need money,+"+ether('10').toString() ,final);
         //
         // });
-
-
-
-
     });
 });
