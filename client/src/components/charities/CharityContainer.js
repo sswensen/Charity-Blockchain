@@ -10,20 +10,28 @@ export default class CharityContainer extends Component {
         balance: 0
     };
 
+    componentDidMount() {
+        console.log("Received charity: ", this.props.charity);
+        this.setState({
+            name: this.props.charity.name,
+            description: this.props.charity.description
+        })
+    };
+
     async loadDetails() {
         //const receivedDetails = await trojanSecret.methods.getDescription(this.props.name).call();
 
 
-        this.setState({
-            //description: receivedDetails,
-        });
+        // this.setState({
+        //     description: receivedDetails,
+        // });
     }
 
     render() {
         return (
             <Card>
                 <Card.Content>
-                    <div className="header">{this.props.name}</div>
+                    <div className="header">{this.state.name}</div>
                     <div className="meta">
                         <span className="date">Created in Sep 2014</span>
                     </div>
@@ -33,8 +41,8 @@ export default class CharityContainer extends Component {
                 </Card.Content>
                 <div className="extra content">
                     <div className="ui two buttons">
-                        <DonateToCharity name={this.props.name} convert={this.props.convert}/>
-                        <Charity name={this.props.name} convert={this.props.convert}/>
+                        <DonateToCharity name={this.state.name} convert={this.props.convert}/>
+                        <Charity name={this.state.name} convert={this.props.convert}/>
                     </div>
                 </div>
             </Card>

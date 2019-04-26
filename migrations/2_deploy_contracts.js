@@ -9,6 +9,7 @@ module.exports = function(deployer) {
     //deployer.deploy(Helpers);
 
     deployer.deploy(Charity,"TEST charity", "We save Puppies");
+    deployer.deploy(Charity,"TEST charity2", "We save Puppies");
 
     // Additional contracts can be deployed here
 };
