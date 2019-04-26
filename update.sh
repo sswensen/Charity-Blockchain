@@ -1,5 +1,6 @@
 #!/bin/bash
 cd ./client/
+rm -r node_modules
 npm install
 cd ..
 npm install
