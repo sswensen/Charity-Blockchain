@@ -3,7 +3,10 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sswensen/Charity-Blockchain)
  
 ![version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![version](https://img.shields.io/badge/contributors-3-brightgreen.svg)
+![contributors](https://img.shields.io/badge/contributors-3-brightgreen.svg)
+
+[![Live Demo](https://img.shields.io/badge/-Live%20Demo-important.svg)](https://golden-mirage.herokuapp.com/)
+
  
 ## Getting Started
 
