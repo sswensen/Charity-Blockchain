@@ -28,17 +28,6 @@ class Charities extends Component {
 
 
     render() {
-        if (this.state.loading) return (
-            <div className="ui segment wrapper">
-                <div className="ui active dimmer">
-                    <div className="ui massive text loader">Loading Web3 Interface...</div>
-                </div>
-                <p></p>
-                <p></p>
-                <p></p>
-            </div>
-        );
-
         return (
             <ResponsiveContainer>
                 <Segment style={{padding: '5em 0em'}} vertical secondary>

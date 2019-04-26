@@ -88,6 +88,16 @@ class CardContainer extends Component {
     };
 
     render() {
+        if (this.state.loading || true) return (
+            <div className="ui segment wrapper">
+                <div className="ui active dimmer inverted">
+                    <div className="ui massive text loader">Loading Web3 Interface...</div>
+                </div>
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
+        );
         return (
             <div>
                 <div className="ui three cards">
