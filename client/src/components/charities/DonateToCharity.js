@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Button, Header, Icon, Modal, Form, Message} from "semantic-ui-react";
 
-export default class Charity extends Component {
+export default class DonateToCharity extends Component {
     state = {
         modalOpen: false,
         numPlayers: "0",
@@ -14,13 +14,6 @@ export default class Charity extends Component {
         this.setState({modalOpen: true});
         //const numPlayers = await trojanSecret.methods.memberCount().call();
         //const players = this.props.convert(await trojanSecret.methods.listPlayers().call());
-
-        //const receivedDetails = await trojanSecret.methods.getDescription(this.props.name).call();
-
-
-        this.setState({
-            //description: receivedDetails,
-        });
     };
 
 
@@ -30,7 +23,7 @@ export default class Charity extends Component {
         return (
             <Modal
                 trigger={
-                    <div className="ui basic blue button" onClick={this.handleOpen}>Details</div>
+                    <div className="ui basic green button" onClick={this.handleOpen}>Donate</div>
 
                 }
                 open={this.state.modalOpen}
@@ -40,7 +33,7 @@ export default class Charity extends Component {
                 <Modal.Content>
 
                     <h4>{this.props.name}</h4>
-                    <br />
+                    <br/>
                     <h3>
                         {this.props.description}
                     </h3>
@@ -50,20 +43,23 @@ export default class Charity extends Component {
                             <label>Donation amount:</label>
                             <input
                                 placeholder="Name"
-                                onChange={event => this.setState({ value: event.target.value })}
+                                onChange={event => this.setState({value: event.target.value})}
                             />
                         </Form.Field>
-                        <Message error header="Oops!" content={this.state.errorMessage} />
+                        <Message error header="Oops!" content={this.state.errorMessage}/>
                         <div className="ui buttons">
-                            <button className="ui button active" loading={this.state.loading} onClick={this.handleClose}>Cancel</button>
-                            <div className="or"></div>
-                            <button className="ui positive button" loading={this.state.loading} type="submit">Donate</button>
+                            <button className="ui button active" loading={this.state.loading}
+                                    onClick={this.handleClose}>Cancel
+                            </button>
+                            <div className="or"/>
+                            <button className="ui positive button" loading={this.state.loading} type="submit">Donate
+                            </button>
                         </div>
                     </Form>
                 </Modal.Content>
                 <Modal.Actions>
                     <Button color="red" onClick={this.handleClose} inverted>
-                        <Icon name="cancel" /> Close
+                        <Icon name="cancel"/> Close
                     </Button>
                 </Modal.Actions>
             </Modal>
