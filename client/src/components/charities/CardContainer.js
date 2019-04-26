@@ -3,38 +3,38 @@ import CharityContainer from "./CharityContainer";
 
 class CardContainer extends Component {
     state = {
-        dataKey: null,
-        testObject: {
-            "index": -1,
-            "name": "",
-            "description": ""
-        },
+        // dataKey: null,
+        // testObject: {
+        //     "index": -1,
+        //     "name": "",
+        //     "description": ""
+        // },
 
-        testIndex: "",
-        testName: "",
-        testDesription: "",
+        // testIndex: "",
+        // testName: "",
+        // testDesription: "",
 
-        value: "",
-        message: "",
+        // value: "",
+        // message: "",
 
-        charityNames: [
-            "Scott Swensen Foundation",
-            "Claire Goldstein Foundation",
-            "Kenny Nguyen Foundation",
-            "Chipotle For All",
-            "Wounded Warriors",
-            "Blockchain Support Group",
-        ],
-        charityDescriptions: [
-            "A foundation for the success of Scott in his CS 481a3 class.",
-            "A foundation for the success of Claire in his CS 481a3 class.",
-            "A foundation for the success of Kenny in his CS 481a3 class.",
-            "The one and only, best and greatest burrito-birthing company. Long live the guacamole",
-            "Support our returning troops.",
-            "Help our team afford the cups of coffee we need to stay up every night to finish this project.",
-        ],
+        // charityNames: [
+        //     "Scott Swensen Foundation",
+        //     "Claire Goldstein Foundation",
+        //     "Kenny Nguyen Foundation",
+        //     "Chipotle For All",
+        //     "Wounded Warriors",
+        //     "Blockchain Support Group",
+        // ],
+        // charityDescriptions: [
+        //     "A foundation for the success of Scott in his CS 481a3 class.",
+        //     "A foundation for the success of Claire in his CS 481a3 class.",
+        //     "A foundation for the success of Kenny in his CS 481a3 class.",
+        //     "The one and only, best and greatest burrito-birthing company. Long live the guacamole",
+        //     "Support our returning troops.",
+        //     "Help our team afford the cups of coffee we need to stay up every night to finish this project.",
+        // ],
 
-        charities: [
+        // charities: [
             // {
             //     "index": 0,
             //     "name": "Scott Swensen Foundation",
@@ -66,11 +66,11 @@ class CardContainer extends Component {
             //     "description": "Support our returning troops. Go America. Why is this card formatting differently."
             // }
 
-        ]
+        // ]
     };
 
     componentDidMount() {
-        const {drizzle} = this.props;
+        // const {drizzle} = this.props;
 
 
         // console.log("on did mount");
@@ -102,7 +102,7 @@ class CardContainer extends Component {
         //this.setState({dataKey});
 
 
-        this.setState({modalOpen: true});
+        // this.setState({modalOpen: true});
         //const receivedCharityNames = contract.methods["getCharityNames"].cacheCall();
         //console.log("Charity Names: ", receivedCharityNames);
 
@@ -191,6 +191,7 @@ class CardContainer extends Component {
         // // if it exists, then we display its value
         // console.log(Name1.value);
 
+        // Convert the charities object to an array so we can map
         const objectToArray = Object.keys(this.props.drizzle.contracts).map(i => this.props.drizzle.contracts[i]);
 
         return (

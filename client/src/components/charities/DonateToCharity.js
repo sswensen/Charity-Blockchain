@@ -29,20 +29,23 @@ export default class DonateToCharity extends Component {
                 open={this.state.modalOpen}
                 onClose={this.handleClose}
             >
-                <Header icon="browser" content="Charity Details"/>
+                <Header icon="dollar sign" content="Charity Details"/>
                 <Modal.Content>
+                    <h2 className="ui icon header center aligned">
+                        <i className="money bill alternate outline icon"/>
+                        <div className="content">
+                            Donate
+                            <h3 className="sub header">{this.props.name}</h3>
+                        </div>
+                    </h2>
 
-                    <h4>{this.props.name}</h4>
                     <br/>
-                    <h3>
-                        {this.props.description}
-                    </h3>
 
                     <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
                         <Form.Field>
                             <label>Donation amount:</label>
                             <input
-                                placeholder="Name"
+                                placeholder="Amount"
                                 onChange={event => this.setState({value: event.target.value})}
                             />
                         </Form.Field>

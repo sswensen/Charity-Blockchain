@@ -11,7 +11,7 @@ export default class CharityContainer extends Component {
     };
 
     componentDidMount() {
-        console.log("Received charity fro CardContainer: ", this.props.charity);
+        console.log("Received charity from CardContainer: ", this.props.charity);
 
         this.props.charity.methods.getCharityName().call()
             .then((response) => this.setState({
@@ -54,7 +54,7 @@ export default class CharityContainer extends Component {
                 <div className="extra content">
                     <div className="ui two buttons">
                         <DonateToCharity name={this.state.name} convert={this.props.convert}/>
-                        <Charity name={this.state.name} convert={this.props.convert}/>
+                        <Charity name={this.state.name} description={this.state.description} convert={this.props.convert}/>
                     </div>
                 </div>
             </Card>

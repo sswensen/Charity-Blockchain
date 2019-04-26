@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Button, Header, Icon, Modal, Form, Message} from "semantic-ui-react";
+import {Button, Header, Icon, Modal} from "semantic-ui-react";
 
 export default class Charity extends Component {
     state = {
@@ -38,28 +38,11 @@ export default class Charity extends Component {
             >
                 <Header icon="browser" content="Charity Details"/>
                 <Modal.Content>
-
-                    <h4>{this.props.name}</h4>
+                    <h2>{this.props.name}</h2>
                     <br />
                     <h3>
                         {this.props.description}
                     </h3>
-
-                    <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
-                        <Form.Field>
-                            <label>Donation amount:</label>
-                            <input
-                                placeholder="Name"
-                                onChange={event => this.setState({ value: event.target.value })}
-                            />
-                        </Form.Field>
-                        <Message error header="Oops!" content={this.state.errorMessage} />
-                        <div className="ui buttons">
-                            <button className="ui button active" loading={this.state.loading} onClick={this.handleClose}>Cancel</button>
-                            <div className="or"/>
-                            <button className="ui positive button" loading={this.state.loading} type="submit">Donate</button>
-                        </div>
-                    </Form>
                 </Modal.Content>
                 <Modal.Actions>
                     <Button color="red" onClick={this.handleClose} inverted>
