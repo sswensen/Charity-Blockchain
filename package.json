@@ -1,0 +1,17 @@
+{
+  "name": "Charity-Blockchain",
+  "version": "0.1.0",
+  "main": "server.js",
+  "private": true,
+  "homepage": "https://golden-mirage.herokuapp.com/",
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "openzeppelin-test-helpers": "^0.3.2"
+  },
+  "scripts": {
+    "serve": "node server.js"
+  }
+}
