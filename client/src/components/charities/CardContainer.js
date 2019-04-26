@@ -2,7 +2,11 @@ import React, {Component} from "react";
 import CharityContainer from "./CharityContainer";
 
 class CardContainer extends Component {
+
     state = {
+        loading: true,
+        drizzleState: null,
+
         value: "",
         message: "",
 
@@ -59,23 +63,28 @@ class CardContainer extends Component {
     };
 
     componentDidMount() {
-        console.log("on did mount");
         const {drizzle} = this.props;
+
+        // subscribe to changes in the store
+        this.unsubscribe = drizzle.store.subscribe(() => {
+            // every time the store updates, grab the state from drizzle
+            const drizzleState = drizzle.store.getState();
+
+            // check to see if it's ready, if so, update local component state
+            if (drizzleState.drizzleStatus.initialized) {
+
+                this.setState({loading: false, drizzleState});
+            }
+        });
+
+        console.log("on did mount");
         const contract = drizzle.contracts.Charity;
         console.log("Charity0 ", contract);
-
         this.setState({modalOpen: true});
-        //const recievedNumCharities = await trojanSecret.methods.charityCount().call();
-        //const recievedCharityNames = this.convert(await trojanSecret.methods.getCharityNames().call());
+    };
 
-        //const receivedNumCharities = this.state.charityNames.length;
-        //const receivedCharityNames = contract.methods["getCharityNames"].cacheCall();
-        //console.log("Charity Names: ", receivedCharityNames);
-
-        // this.setState({
-        //     charityNames: receivedNumCharities,
-        //     numCharities: this.convert(receivedCharityNames)
-        // });
+    componentWillUnmount() {
+        this.unsubscribe();
     };
 
     render() {
@@ -83,7 +92,10 @@ class CardContainer extends Component {
             <div>
                 <div className="ui three cards">
                     {this.state.charities.map((c) =>
-                        <CharityContainer key={c.index} charity={c} convert={this.convert}/>
+                        <CharityContainer key={c.index} charity={c} convert={this.convert}
+                                          drizzle={this.props.drizzle}
+                                          drizzleState={this.state.drizzleState}
+                        />
                     )}
                 </div>
 

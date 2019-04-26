@@ -3,30 +3,29 @@ import {Button, Container, Header, Menu, Responsive, Segment, Visibility} from "
 import CardContainer from "./CardContainer";
 import PropTypes from "prop-types";
 import Footer from "../footer/Footer";
+import {Drizzle} from "drizzle";
 
+import Charity from "../../contracts/Charity.json";
+
+// let drizzle know what contracts we want and how to access our test blockchain
+const options = {
+    contracts: [
+        Charity
+    ],
+    web3: {
+        fallback: {
+            type: "ws",
+            url: "ws://127.0.0.1:7545",
+        },
+    },
+};
+
+// setup drizzle
+const drizzle = new Drizzle(options);
 
 class Charities extends Component {
     state = {loading: true, drizzleState: null};
 
-    componentDidMount() {
-        const {drizzle} = this.props;
-
-        // subscribe to changes in the store
-        this.unsubscribe = drizzle.store.subscribe(() => {
-            // every time the store updates, grab the state from drizzle
-            const drizzleState = drizzle.store.getState();
-
-            // check to see if it's ready, if so, update local component state
-            if (drizzleState.drizzleStatus.initialized) {
-
-                this.setState({loading: false, drizzleState});
-            }
-        });
-    };
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    };
 
     render() {
         if (this.state.loading) return (
@@ -47,8 +46,7 @@ class Charities extends Component {
                     <Container>
                         <div>
                             <CardContainer
-                                drizzle={this.props.drizzle}
-                                drizzleState={this.state.drizzleState}
+                                drizzle={drizzle}
                             />
                         </div>
                     </Container>
