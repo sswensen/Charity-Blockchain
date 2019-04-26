@@ -11,11 +11,23 @@ export default class CharityContainer extends Component {
     };
 
     componentDidMount() {
-        console.log("Received charity: ", this.props.charity);
-        this.setState({
-            name: this.props.charity.name,
-            description: this.props.charity.description
-        })
+        console.log("Received charity fro CardContainer: ", this.props.charity);
+
+        this.props.charity.methods.getCharityName().call()
+            .then((response) => this.setState({
+                name: response
+            }));
+
+        this.props.charity.methods.getCharityDescription().call()
+            .then((response) => this.setState({
+                description: response
+            }));
+
+
+        // this.setState({
+        //     name: this.props.charity.contractName,
+        //     description: this.props.charity.description
+        // })
     };
 
     async loadDetails() {

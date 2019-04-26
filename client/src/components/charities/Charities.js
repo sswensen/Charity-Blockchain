@@ -4,7 +4,6 @@ import CardContainer from "./CardContainer";
 import PropTypes from "prop-types";
 import Footer from "../footer/Footer";
 
-
 class Charities extends Component {
     state = {loading: true, drizzleState: null};
 
@@ -52,7 +51,6 @@ class Charities extends Component {
                             />
                         </div>
                     </Container>
-
                 </Segment>
                 <Footer />
             </ResponsiveContainer>

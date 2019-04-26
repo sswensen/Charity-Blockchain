@@ -8,6 +8,11 @@ import './css/index.css';
 import {Drizzle} from "drizzle";
 
 import Charity from "./contracts/Charity.json";
+import Charity2 from "./contracts/Charity2.json";
+import Charity3 from "./contracts/Charity3.json";
+import Charity4 from "./contracts/Charity4.json";
+import Charity5 from "./contracts/Charity5.json";
+import Charity6 from "./contracts/Charity6.json";
 
 import Charities from "./components/charities/Charities";
 import NotFound from "./components/NotFound/NotFound";
@@ -16,7 +21,7 @@ import About from "./components/about/About";
 // let drizzle know what contracts we want and how to access our test blockchain
 const options = {
     contracts: [
-        Charity
+        Charity, Charity2, Charity3, Charity4, Charity5, Charity6
     ],
     web3: {
         fallback: {
