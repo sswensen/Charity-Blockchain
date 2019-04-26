@@ -12,6 +12,7 @@
     "openzeppelin-test-helpers": "^0.3.2"
   },
   "scripts": {
-    "serve": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   }
 }
