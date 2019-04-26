@@ -1,4 +1,3 @@
-
 const {balance, ether}= require('openzeppelin-test-helpers');
 var Charity = artifacts.require('Charity');
 
