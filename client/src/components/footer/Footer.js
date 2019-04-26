@@ -12,24 +12,21 @@ class Footer extends Component {
                                 <Header inverted as='h4' content='About'/>
                                 <List link inverted>
                                     <List.Item as='a' href='/about'>Contact Us</List.Item>
-                                    <List.Item as='a' href='https://summitdrift.com'>SummitDrift</List.Item>
                                 </List>
                             </Grid.Column>
                             <Grid.Column width={3}>
-                                <Header inverted as='h4' content='Companies'/>
+                                <Header inverted as='h4' content='External Links'/>
                                 <List link inverted>
-                                    <List.Item as='a' href='https://scottswensen.com'>Scott Swensen
-                                        Photography</List.Item>
-                                    <List.Item as='a' href='https://summitdrift.com'>SummitDrift</List.Item>
+                                    <List.Item as='a' href='https://github.com/sswensen/Charity-Blockchain'>GitHub Repository</List.Item>
                                 </List>
                             </Grid.Column>
                             <Grid.Column width={7}>
                                 <Header as='h4' inverted>
-                                    Welcome to the Future
+                                    Powered by ReactJS
                                 </Header>
-                                <p>
-                                    A ReactJS application
-                                </p>
+                                <List link inverted>
+                                    <List.Item as='a' href='https://reactjs.org/'>Learn how to code the future</List.Item>
+                                </List>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>

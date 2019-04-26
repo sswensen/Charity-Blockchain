@@ -40,8 +40,7 @@ const HomepageHeading = ({mobile}) => (
         />
         <Header
             as='h2'
-            content='Looks like something went wrong.
-            Head back to our homepage'
+            content='Looks like something went wrong.'
             inverted
             style={{
                 fontSize: mobile ? '1.5em' : '1.7em',
@@ -103,15 +102,6 @@ class DesktopContainer extends Component {
                                 <a className="item" href='/charities'>Charities</a>
                                 <a className="item" href="/company">Company</a>
                                 <a className="item" href="/about">About</a>
-
-                                <Menu.Item position='right'>
-                                    <Button as='a' inverted={!fixed}>
-                                        Log in
-                                    </Button>
-                                    <Button as='a' inverted={!fixed} primary={fixed} style={{marginLeft: '0.5em'}}>
-                                        Sign Up
-                                    </Button>
-                                </Menu.Item>
                             </Container>
                         </Menu>
                         <HomepageHeading/>
