@@ -31,22 +31,25 @@ export default class Charity extends Component {
             <Modal
                 trigger={
                     <div className="ui basic blue button" onClick={this.handleOpen}>Details</div>
-
                 }
                 open={this.state.modalOpen}
                 onClose={this.handleClose}
             >
                 <Header icon="browser" content="Charity Details"/>
                 <Modal.Content>
-                    <h2>{this.props.name}</h2>
-                    <br />
-                    <h3>
-                        {this.props.description}
-                    </h3>
+
+                    <h2 className="ui icon header center aligned">
+                        <i className="copy outline icon"/>
+                        <div className="content">
+                            {this.props.name}
+                            <h3 className="sub header">{this.props.description}</h3>
+                            <h4 className="sub header">Current amount donated: {this.props.balance}</h4>
+                        </div>
+                    </h2>
                 </Modal.Content>
                 <Modal.Actions>
                     <Button color="red" onClick={this.handleClose} inverted>
-                        <Icon name="cancel" /> Close
+                        <Icon name="cancel"/> Close
                     </Button>
                 </Modal.Actions>
             </Modal>

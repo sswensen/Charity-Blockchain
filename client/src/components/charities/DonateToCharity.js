@@ -29,7 +29,7 @@ export default class DonateToCharity extends Component {
                 open={this.state.modalOpen}
                 onClose={this.handleClose}
             >
-                <Header icon="dollar sign" content="Charity Details"/>
+                <Header icon="dollar sign" content="Donate to Charity"/>
                 <Modal.Content>
                     <h2 className="ui icon header center aligned">
                         <i className="money bill alternate outline icon"/>

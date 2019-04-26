@@ -23,6 +23,11 @@ export default class CharityContainer extends Component {
                 description: response
             }));
 
+        this.props.charity.methods.getCharityBalance().call()
+            .then((response) => this.setState({
+                balance: response
+            }));
+
 
         // this.setState({
         //     name: this.props.charity.contractName,
@@ -45,7 +50,7 @@ export default class CharityContainer extends Component {
                 <Card.Content>
                     <div className="header">{this.state.name}</div>
                     <div className="meta">
-                        <span className="date">Created in Sep 2014</span>
+                        <span className="date">Current donations: {this.state.balance}</span>
                     </div>
                 </Card.Content>
                 <Card.Content>
@@ -54,7 +59,7 @@ export default class CharityContainer extends Component {
                 <div className="extra content">
                     <div className="ui two buttons">
                         <DonateToCharity name={this.state.name} convert={this.props.convert}/>
-                        <Charity name={this.state.name} description={this.state.description} convert={this.props.convert}/>
+                        <Charity name={this.state.name} description={this.state.description} balance={this.state.balance} convert={this.props.convert}/>
                     </div>
                 </div>
             </Card>
