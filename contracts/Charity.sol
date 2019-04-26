@@ -93,17 +93,19 @@ contract Charity {
 
 	// ------------------------ ACTIONS ------------------------ //
 
-	function donate() public payable ongoing returns (bool) {
-		uint current = donations[msg.sender] + msg.value;
-		if (donations[msg.sender] > 0) {
-			donations[msg.sender] = current;
+	function donate(uint amount, address donator) public payable ongoing returns (bool) {
+		uint current = donations[donator] + amount;
+		if (donations[donator] > 0) {
+			donations[donator] = current;
 		} else {
-			donations[msg.sender] = current;
-			donators.push(msg.sender);
+			donations[donator] = current;
+			donators.push(donator);
 		}
-		balance += msg.value;
+		balance += amount;
 
-        amountSTR = strConcat("+",uint2str(msg.value) ,"");
+		transact(amount, toAsciiString(donator));
+
+    amountSTR = strConcat("+",uint2str(msg.value) ,"");
 
 		transact(amountSTR, toAsciiString(msg.sender));
 
