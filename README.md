@@ -1,13 +1,13 @@
-# Charity Blockchain 
+# Charity Blockchain
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sswensen/Charity-Blockchain)
- 
+
 ![version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![contributors](https://img.shields.io/badge/contributors-3-brightgreen.svg)
 
 [![Live Demo](https://img.shields.io/badge/-Live%20Demo-important.svg)](https://golden-mirage.herokuapp.com/)
 
- 
+
 ## Getting Started
 
 To use this project first make sure you have npm installed. These are dependency managers that will download everything you need for the project.
@@ -27,7 +27,12 @@ To get Charity Blockchain up and running on your local machine, run the followin
 $ git clone git@github.com:sswensen/Charity-Blockchain.git // Clone repo
 ```
 
-Install necessary dependencies:
+You can run the provided script to install all dependencies and deploy the contracts or you can do them manually.
+```bash
+$ ./update.sh // Install everything automatically
+```
+
+Install dependencies manually:
 ```bash
 $ cd client
 $ npm install // Install all dependencies
@@ -63,7 +68,7 @@ $ heroku local web
 ```
 Your app should now be running on [http://localhost:7777/](http://localhost:7777/).
 
-To deploy to Heroku, first commit all changes to git. 
+To deploy to Heroku, first commit all changes to git.
 ```
 $ git add .
 $ git commit -m "Created something awesome"
