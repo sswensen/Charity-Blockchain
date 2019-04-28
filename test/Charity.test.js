@@ -73,7 +73,7 @@ contract('Charity', accounts => {
 
           //0x5B74afb60E1314D631CfBE1121d2419fCC0eeF1D
           var withdrawl = await charity.withdrawl(ether('5'),"I need money", accounts[0]);
-          //console.log(withdrawl);
+          console.log(withdrawl);
           let balance = await charity.getCharityBalance();
           assert.equal(ether('5').toString() , balance.toString());
         });
