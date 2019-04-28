@@ -34,6 +34,7 @@ export default class Charity extends Component {
                 }
                 open={this.state.modalOpen}
                 onClose={this.handleClose}
+                closeIcon
             >
                 <Header icon="browser" content="Charity Details"/>
                 <Modal.Content>

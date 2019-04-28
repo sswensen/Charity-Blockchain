@@ -239,14 +239,13 @@ const Home = () => (
                             We Make Your Dreams Come True
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
-                            We can give your company superpowers to do things that they never thought possible.
+                            <Image src='https://semantic-ui.com/images/wireframe/short-paragraph.png' />
                         </p>
                         <Header as='h3' style={{fontSize: '2em'}}>
                             We Make Bananas That Can Dance
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
-                            Yes that's right, you thought it was the stuff of dreams, but even bananas can be
-                            bioengineered.
+                            <Image src='https://semantic-ui.com/images/wireframe/short-paragraph.png' />
                         </p>
                     </Grid.Column>
                     <Grid.Column floated='right' width={6}>
@@ -290,9 +289,7 @@ const Home = () => (
                     Breaking The Grid, Grabs Your Attention
                 </Header>
                 <p style={{fontSize: '1.33em'}}>
-                    Instead of focusing on content creation and hard work, we have learned how to master the
-                    art of doing nothing by providing massive amounts of whitespace and generic content that
-                    can seem massive, monolithic and worth your attention.
+                    <Image src='https://semantic-ui.com/images/wireframe/paragraph.png' />
                 </p>
                 <Button as='a' size='large'>
                     Read More
@@ -304,19 +301,17 @@ const Home = () => (
                     horizontal
                     style={{margin: '3em 0em', textTransform: 'uppercase'}}
                 >
-                    <a href='/'>Case Studies</a>
+                    <a href='/'>More information</a>
                 </Divider>
 
                 <Header as='h3' style={{fontSize: '2em'}}>
                     Did We Tell You About Our Bananas?
                 </Header>
                 <p style={{fontSize: '1.33em'}}>
-                    Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but
-                    it's really true. It took years of gene splicing and combinatory DNA research, but our
-                    bananas can really dance.
+                    <Image src='https://semantic-ui.com/images/wireframe/paragraph.png' />
                 </p>
                 <Button as='a' size='large'>
-                    I'm Still Quite Interested
+                    Read More
                 </Button>
             </Container>
         </Segment>
