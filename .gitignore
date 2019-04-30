@@ -31,4 +31,5 @@ npm-debug.log
 
 # Production
 **/contracts/*.json
+!/client/src/contracts/Charity*.json
 **/client/build
