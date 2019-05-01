@@ -44,22 +44,10 @@ export default class Charity extends Component {
                     <h3>
                         {this.props.description}
                     </h3>
+                    <h3> Charity Owner: </h3>
+                    <h3> Charity Balance: </h3>
 
-                    <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
-                        <Form.Field>
-                            <label>Donation amount:</label>
-                            <input
-                                placeholder="Name"
-                                onChange={event => this.setState({ value: event.target.value })}
-                            />
-                        </Form.Field>
-                        <Message error header="Oops!" content={this.state.errorMessage} />
-                        <div className="ui buttons">
-                            <button className="ui button active" loading={this.state.loading} onClick={this.handleClose}>Cancel</button>
-                            <div className="or"/>
-                            <button className="ui positive button" loading={this.state.loading} type="submit">Donate</button>
-                        </div>
-                    </Form>
+
                 </Modal.Content>
                 <Modal.Actions>
                     <Button color="red" onClick={this.handleClose} inverted>

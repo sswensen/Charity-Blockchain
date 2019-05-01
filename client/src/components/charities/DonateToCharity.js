@@ -1,5 +1,8 @@
 import React, {Component} from "react";
 import {Button, Header, Icon, Modal, Form, Message} from "semantic-ui-react";
+import Charity from "../../contracts/Charity";
+import web3 from "../../web3";
+
 
 export default class DonateToCharity extends Component {
     state = {
@@ -18,6 +21,31 @@ export default class DonateToCharity extends Component {
 
 
     handleClose = () => this.setState({modalOpen: false});
+
+    onSubmit = async event => {
+      event.preventDefault();
+      this.setState({
+        loading: true,
+        errorMessage: "",
+        message: "waiting for blockchain transaction to complete..."
+      });
+      try {
+        const accounts = await web3.eth.getAccounts();
+        await Charity.methods
+          .donate({from: accounts[9], value: (this.state.value)}); // contains the donation Amount
+
+        this.setState({
+          loading: false,
+          message: "You have donated"
+        });
+      } catch (err) {
+        this.setState({
+          loading: false,
+          errorMessage: err.message,
+          message: "Donation Error"
+        });
+      }
+    };
 
     render() {
         return (
@@ -42,18 +70,24 @@ export default class DonateToCharity extends Component {
                         <Form.Field>
                             <label>Donation amount:</label>
                             <input
-                                placeholder="Name"
+                                placeholder="Donation Amount"
                                 onChange={event => this.setState({value: event.target.value})}
                             />
                         </Form.Field>
                         <Message error header="Oops!" content={this.state.errorMessage}/>
                         <div className="ui buttons">
+
                             <button className="ui button active" loading={this.state.loading}
                                     onClick={this.handleClose}>Cancel
                             </button>
                             <div className="or"/>
-                            <button className="ui positive button" loading={this.state.loading} type="submit">Donate
+
+                            <button className="ui positive button" loading={this.state.loading} type="submit">
+                              Donate
                             </button>
+
+
+
                         </div>
                     </Form>
                 </Modal.Content>
