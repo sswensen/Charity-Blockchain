@@ -33,3 +33,5 @@ npm-debug.log
 **/contracts/*.json
 !/client/src/contracts/Charity*.json
 **/client/build
+
+**/mnemonic.txt
