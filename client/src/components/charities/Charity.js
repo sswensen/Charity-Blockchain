@@ -51,13 +51,13 @@ export default class Charity extends Component {
                             {this.props.name}
                             <h3 className="sub header">{this.props.description}</h3>
                             <br/>
-                            <h4 className="sub header">Current amount donated: {this.props.balance}</h4>
+                            <h4 className="sub header">Current amount donated: {this.props.balance} Ethereum.</h4>
                             <br/>
                             <h3 className="sub header">Recent donations:
                                 <br/>
                                 <List>
                                     {this.state.transactionAmounts.map((t) =>
-                                        <Item key={t + Math.random()}>{t}</Item>
+                                        <Item key={t + Math.random()}>{t} Eth</Item>
                                     )}
                                 </List>
                             </h3>
