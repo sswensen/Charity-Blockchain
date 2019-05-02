@@ -17,6 +17,10 @@
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
  */
+var fs = require("fs");
+const HDWalletProvider = require("truffle-hdwallet-provider");
+const mnemonic = fs.readFileSync('./mnemonic.txt').toString();
+console.log(mnemonic);
 
 // const HDWalletProvider = require('truffle-hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
@@ -39,6 +43,15 @@ module.exports = {
    */
 
   networks: {
+    rinkeby: {
+      provider: function() {
+        return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/d99dfed774254c8bbed2c50a44ccc186");
+      },
+      network_id: 4,
+      gas: 4500000,
+      gasPrice: 10000000000,
+    },
+
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
     // You should run a client (like ganache-cli, geth or parity) in a separate terminal

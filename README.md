@@ -41,6 +41,12 @@ $ truffle compile
 $ truffle migrate
 ```
 
+Compile and deploy contracts to Rinkeby:
+```bash
+$ truffle migrate --network rinkeby
+```
+Note: You must have a file named `mnemonic.txt` in the root directory containing your 12-word seed. This file must be one line.
+
 To run in development mode (from the `client` directory:
 ```
 $ npm run dev
