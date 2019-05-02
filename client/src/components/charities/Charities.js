@@ -63,7 +63,7 @@ class Charities extends Component {
                         </div>
                     </Container>
                 </Segment>
-                <Footer />
+                <Footer/>
             </ResponsiveContainer>
         );
     }
@@ -155,7 +155,7 @@ class DesktopContainer extends Component {
                                 </Menu.Item>
                             </Container>
                         </Menu>
-                        <PageHeading />
+                        <PageHeading/>
                     </Segment>
                 </Visibility>
 
