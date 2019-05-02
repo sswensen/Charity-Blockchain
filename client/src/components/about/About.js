@@ -39,7 +39,7 @@ class About extends Component {
                                       </span>
                                             <span>
                                         <i className="user icon"/>
-                                        75 Friends
+                                        Scott
                                       </span>
                                         </div>
                                     </div>
@@ -73,7 +73,7 @@ class About extends Component {
                                       </span>
                                             <span>
                                         <i className="user icon"/>
-                                        35 Friends
+                                        Claire
                                       </span>
                                         </div>
                                     </div>
@@ -106,7 +106,7 @@ class About extends Component {
                                       </span>
                                             <span>
                                         <i className="user icon"/>
-                                        151 Friends
+                                        Kenny
                                       </span>
                                         </div>
                                     </div>

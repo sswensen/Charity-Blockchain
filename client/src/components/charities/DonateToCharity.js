@@ -11,7 +11,6 @@ export default class DonateToCharity extends Component {
             players: [],
             errorMessage: "",
             value: 0,
-            contractBalance: 0,
             yourContribution: 0,
             transactionAmounts: [],
             transactionDescriptions: [],
@@ -27,11 +26,6 @@ export default class DonateToCharity extends Component {
         this.setState({modalOpen: true});
         //const numPlayers = await trojanSecret.methods.memberCount().call();
         //const players = this.props.convert(await trojanSecret.methods.listPlayers().call());
-
-        this.props.charity.methods.getCharityBalance().call()
-            .then((response) => this.setState({
-                contractBalance: response / (10**18)
-            }));
 
         this.props.charity.methods.getMyDonation().call()
             .then((response) => this.setState({
@@ -69,8 +63,9 @@ export default class DonateToCharity extends Component {
                             yourContribution: response
                         }));
                     that.setState({
-                        successMessage: "Successfully donated " + amount + " Etherium!"
-                    })
+                        successMessage: "Successfully donated " + amount + " Ethereum!"
+                    });
+                    this.props.updateCharityBalance();
                 });
 
             donatePromise.catch(function (error) {
@@ -103,10 +98,10 @@ export default class DonateToCharity extends Component {
                     <h2 className="ui icon header center aligned">
                         <i className="money bill alternate outline icon"/>
                         <div className="content">
-                            Donate ${this.state.value}
+                            Donate {this.state.value} Ethereum
                             <h3 className="sub header">{this.props.name}</h3>
-                            <h3 className="sub header">Current amount donated: {this.state.contractBalance}</h3>
-                            <h3 className="sub header">Your donation: {this.state.yourContribution}</h3>
+                            <h3 className="sub header">Current amount donated: {this.props.balance} Ethereum.</h3>
+                            <h3 className="sub header">Your donation: {this.state.yourContribution} Ethereum.</h3>
                         </div>
                     </h2>
 
