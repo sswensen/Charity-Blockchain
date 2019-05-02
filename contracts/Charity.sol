@@ -71,7 +71,7 @@ contract Charity {
 	}
 
 	function getCharityBalance() public view returns (uint) {
-		return balance/(10**18);
+		return balance;
 	}
 
 	function getTranscationAmounts() public view returns (bytes) {
