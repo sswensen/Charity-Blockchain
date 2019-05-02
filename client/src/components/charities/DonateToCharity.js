@@ -6,9 +6,7 @@ export default class DonateToCharity extends Component {
         super(props);
         this.state = {
             modalOpen: false,
-            numPlayers: "0",
             message: "",
-            players: [],
             errorMessage: "",
             value: 0,
             yourContribution: 0,
