@@ -2,19 +2,46 @@ import React, {Component} from "react";
 import {Button, Header, Icon, Modal, Form, Message} from "semantic-ui-react";
 
 export default class DonateToCharity extends Component {
-    state = {
-        modalOpen: false,
-        numPlayers: "0",
-        message: "",
-        players: [],
-        errorMessage: "",
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalOpen: false,
+            numPlayers: "0",
+            message: "",
+            players: [],
+            errorMessage: "",
+            value: 0
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
     handleOpen = async () => {
         this.setState({modalOpen: true});
         //const numPlayers = await trojanSecret.methods.memberCount().call();
         //const players = this.props.convert(await trojanSecret.methods.listPlayers().call());
     };
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+
+    handleSubmit(event) {
+        console.log("Donation sub");
+        event.preventDefault();
+
+        this.props.web3.eth.getAccounts((error, accounts) => {
+            this.props.charity.methods.donate().send({
+                from: accounts[7],
+                value: this.props.web3.utils.toWei(this.state.value, "ether"),
+                gas: "4500000"
+            })
+                .then((result) => {
+                    console.log(result);
+                })
+        })
+    }
 
 
     handleClose = () => this.setState({modalOpen: false});
@@ -35,14 +62,14 @@ export default class DonateToCharity extends Component {
                     <h2 className="ui icon header center aligned">
                         <i className="money bill alternate outline icon"/>
                         <div className="content">
-                            Donate
+                            Donate ${this.state.value}
                             <h3 className="sub header">{this.props.name}</h3>
                         </div>
                     </h2>
 
                     <br/>
 
-                    <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
+                    <Form onSubmit={this.handleSubmit} error={!!this.state.errorMessage}>
                         <Form.Field>
                             <label>Donation amount:</label>
                             <input
