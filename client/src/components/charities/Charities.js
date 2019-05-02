@@ -42,7 +42,17 @@ class Charities extends Component {
 
         return (
             <ResponsiveContainer>
-                <Segment style={{padding: '5em 0em'}} vertical secondary>
+                <Segment style={{padding: '1em 0em'}} vertical secondary>
+                    <Container>
+                        <div>
+                            <Button className="ui primary positive labeled icon disabled">
+                                <i className="plus icon"></i>
+                                Add Charity
+                            </Button>
+                        </div>
+                    </Container>
+                </Segment>
+                <Segment style={{padding: '2em 0em'}} vertical secondary>
 
                     <Container>
                         <div>
