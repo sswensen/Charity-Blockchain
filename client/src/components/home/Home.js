@@ -309,7 +309,7 @@ const Home = () => (
                     horizontal
                     style={{margin: '3em 0em', textTransform: 'uppercase'}}
                 >
-                    <a href='/'>More information</a>
+                    <a href='/company'>More information</a>
                 </Divider>
 
                 <Header as='h3' style={{fontSize: '2em'}}>
