@@ -123,10 +123,11 @@ class DesktopContainer extends Component {
                                 <a className="item" href="/about">About</a>
 
                                 <Menu.Item position='right'>
-                                    <Button as='a' inverted={!fixed}>
+                                    <Button as='a' inverted={!fixed} href="/login">
                                         Log in
                                     </Button>
-                                    <Button as='a' inverted={!fixed} primary={fixed} style={{marginLeft: '0.5em'}}>
+                                    <Button as='a' inverted={!fixed} primary={fixed} style={{marginLeft: '0.5em'}}
+                                            href="/sign-up">
                                         Sign Up
                                     </Button>
                                 </Menu.Item>
@@ -195,10 +196,11 @@ class MobileContainer extends Component {
                                     <Icon name='sidebar'/>
                                 </Menu.Item>
                                 <Menu.Item position='right'>
-                                    <Button as='a' inverted>
+                                    <Button as='a' inverted href="/login">
                                         Log in
                                     </Button>
-                                    <Button as='a' inverted style={{marginLeft: '0.5em'}}>
+                                    <Button as='a' inverted style={{marginLeft: '0.5em'}}
+                                            href="/sign-up">
                                         Sign Up
                                     </Button>
                                 </Menu.Item>
@@ -239,24 +241,25 @@ const Home = () => (
                             We Make Your Dreams Come True
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
-                          Blockchain technology is disrupting many sectors of our economy.
-                          By using Blockchain technology we can improve the transparency
-                          of where your money goes to after it is donated. With the help
-                          of the truffle suite and solidity ethereum contracts, we propose a technical
-                          solution that will make the world a better place.
+                            Blockchain technology is disrupting many sectors of our economy.
+                            By using Blockchain technology we can improve the transparency
+                            of where your money goes to after it is donated. With the help
+                            of the truffle suite and solidity ethereum contracts, we propose a technical
+                            solution that will make the world a better place.
                         </p>
                         <Header as='h3' style={{fontSize: '2em'}}>
                             Founders of Transparent Charities
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
                             The creators of Transparent Charities are Scott Swensen, Claire Goldstein and Kenny Nguyen.
-                            They are students under the Computer Science Program @ Colorado State Unversity. These students
+                            They are students under the Computer Science Program @ Colorado State Unversity. These
+                            students
                             are looking for a way to enable the betterment of society.
                         </p>
                     </Grid.Column>
                     <Grid.Column floated='right' width={6}>
                         <Image rounded size='medium'
-                               //src='https://www.ethereum.org/images/logos/ETHEREUM-LOGO_PORTRAIT_Black_small.png'/>
+                            //src='https://www.ethereum.org/images/logos/ETHEREUM-LOGO_PORTRAIT_Black_small.png'/>
                                src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/2000px-Ethereum_logo_2014.svg.png'/>
                     </Grid.Column>
                 </Grid.Row>
@@ -296,10 +299,20 @@ const Home = () => (
                     More about our motivation
                 </Header>
                 <p style={{fontSize: '1.33em'}}>
-                    Money doesn't buy happiness, well unless you spend your money on others. New studies have shown that if you spend money on others or give money to charity it will increase your happiness more than spending that money on yourself (The Guardian). Grassroots and crowdfunding campaigns have opened an approachable way for people into interact with causes that they want to support. Many people are skeptical to donate money to a foundation because they do not know where the money will end up entirely.
+                    Money doesn't buy happiness, well unless you spend your money on others. New studies have shown that
+                    if you spend money on others or give money to charity it will increase your happiness more than
+                    spending that money on yourself (The Guardian). Grassroots and crowdfunding campaigns have opened an
+                    approachable way for people into interact with causes that they want to support. Many people are
+                    skeptical to donate money to a foundation because they do not know where the money will end up
+                    entirely.
                 </p>
                 <p style={{fontSize: '1.33em'}}>
-                The Charity Platform is like GoFundMe, allowing users to create a campaign. When donating money to a campaign there are small percentages of money going to GoFundMe, but not the Charity Platform. When an organizer pulls their money out of a campaign there is a heavy transaction fee through the bank for GoFundMe, but not the Charity Platform. Donators do not see where the money goes after their donation on GoFundMe, but the Charity Platform uses Blockchain Technology to solve this problem with transparency of transactions.
+                    The Charity Platform is like GoFundMe, allowing users to create a campaign. When donating money to a
+                    campaign there are small percentages of money going to GoFundMe, but not the Charity Platform. When
+                    an organizer pulls their money out of a campaign there is a heavy transaction fee through the bank
+                    for GoFundMe, but not the Charity Platform. Donators do not see where the money goes after their
+                    donation on GoFundMe, but the Charity Platform uses Blockchain Technology to solve this problem with
+                    transparency of transactions.
                 </p>
 
 
@@ -316,16 +329,20 @@ const Home = () => (
                     Our Goal
                 </Header>
                 <p style={{fontSize: '1.33em'}}>
-                The team consisting of Scott Swensen, Claire Goldstein, and Kenny Nguyen wanted to base an idea off helping humanity, they concluded on creating a platform
-                for creating and donating to charities. The goal was using Blockchain technology to devise a clear and transparent platform for charities.
-                The platform would allow users to create charities for other people, letting other users see the description of the charity and how much has been donated.
-                The unique part of the platform is that everything is transparent allowing donors to see where and how the money is being allocated from the charity fund.
+                    The team consisting of Scott Swensen, Claire Goldstein, and Kenny Nguyen wanted to base an idea off
+                    helping humanity, they concluded on creating a platform
+                    for creating and donating to charities. The goal was using Blockchain technology to devise a clear
+                    and transparent platform for charities.
+                    The platform would allow users to create charities for other people, letting other users see the
+                    description of the charity and how much has been donated.
+                    The unique part of the platform is that everything is transparent allowing donors to see where and
+                    how the money is being allocated from the charity fund.
                 </p>
 
             </Container>
         </Segment>
         <Footer/>
     </ResponsiveContainer>
-)
+);
 
 export default Home

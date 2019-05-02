@@ -2,14 +2,16 @@ import React, {Component} from "react";
 import {
     Button,
     Container,
+    Divider,
+    Grid,
     Header,
     Icon,
+    Image,
     Menu,
     Responsive,
     Segment,
-    Visibility,
     Sidebar,
-    Image, Divider, Grid
+    Visibility
 } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import Footer from "../footer/Footer";
@@ -47,8 +49,10 @@ class Company extends Component {
                                     Founders of Transparent Charities
                                 </Header>
                                 <p style={{fontSize: '1.33em'}}>
-                                    The creators of Transparent Charities are Scott Swensen, Claire Goldstein and Kenny Nguyen.
-                                    They are students under the Computer Science Program @ Colorado State Unversity. These students
+                                    The creators of Transparent Charities are Scott Swensen, Claire Goldstein and Kenny
+                                    Nguyen.
+                                    They are students under the Computer Science Program @ Colorado State Unversity.
+                                    These students
                                     are looking for a way to enable the betterment of society.
                                 </p>
                             </Grid.Column>
@@ -89,10 +93,20 @@ class Company extends Component {
                             More about our motivation
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
-                            Money doesn't buy happiness, well unless you spend your money on others. New studies have shown that if you spend money on others or give money to charity it will increase your happiness more than spending that money on yourself (The Guardian). Grassroots and crowdfunding campaigns have opened an approachable way for people into interact with causes that they want to support. Many people are skeptical to donate money to a foundation because they do not know where the money will end up entirely.
+                            Money doesn't buy happiness, well unless you spend your money on others. New studies have
+                            shown that if you spend money on others or give money to charity it will increase your
+                            happiness more than spending that money on yourself (The Guardian). Grassroots and
+                            crowdfunding campaigns have opened an approachable way for people into interact with causes
+                            that they want to support. Many people are skeptical to donate money to a foundation because
+                            they do not know where the money will end up entirely.
                         </p>
                         <p style={{fontSize: '1.33em'}}>
-                            The Charity Platform is like GoFundMe, allowing users to create a campaign. When donating money to a campaign there are small percentages of money going to GoFundMe, but not the Charity Platform. When an organizer pulls their money out of a campaign there is a heavy transaction fee through the bank for GoFundMe, but not the Charity Platform. Donators do not see where the money goes after their donation on GoFundMe, but the Charity Platform uses Blockchain Technology to solve this problem with transparency of transactions.
+                            The Charity Platform is like GoFundMe, allowing users to create a campaign. When donating
+                            money to a campaign there are small percentages of money going to GoFundMe, but not the
+                            Charity Platform. When an organizer pulls their money out of a campaign there is a heavy
+                            transaction fee through the bank for GoFundMe, but not the Charity Platform. Donators do not
+                            see where the money goes after their donation on GoFundMe, but the Charity Platform uses
+                            Blockchain Technology to solve this problem with transparency of transactions.
                         </p>
 
 
@@ -109,15 +123,19 @@ class Company extends Component {
                             Our Goal
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
-                            The team consisting of Scott Swensen, Claire Goldstein, and Kenny Nguyen wanted to base an idea off helping humanity, they concluded on creating a platform
-                            for creating and donating to charities. The goal was using Blockchain technology to devise a clear and transparent platform for charities.
-                            The platform would allow users to create charities for other people, letting other users see the description of the charity and how much has been donated.
-                            The unique part of the platform is that everything is transparent allowing donors to see where and how the money is being allocated from the charity fund.
+                            The team consisting of Scott Swensen, Claire Goldstein, and Kenny Nguyen wanted to base an
+                            idea off helping humanity, they concluded on creating a platform
+                            for creating and donating to charities. The goal was using Blockchain technology to devise a
+                            clear and transparent platform for charities.
+                            The platform would allow users to create charities for other people, letting other users see
+                            the description of the charity and how much has been donated.
+                            The unique part of the platform is that everything is transparent allowing donors to see
+                            where and how the money is being allocated from the charity fund.
                         </p>
 
                     </Container>
                 </Segment>
-                <Footer />
+                <Footer/>
             </ResponsiveContainer>
         );
     }
@@ -200,16 +218,17 @@ class DesktopContainer extends Component {
                                 <a className="item" href="/about">About</a>
 
                                 <Menu.Item position='right'>
-                                    <Button as='a' inverted={!fixed}>
+                                    <Button as='a' inverted={!fixed} href="/login">
                                         Log in
                                     </Button>
-                                    <Button as='a' inverted={!fixed} primary={fixed} style={{marginLeft: '0.5em'}}>
+                                    <Button as='a' inverted={!fixed} primary={fixed} style={{marginLeft: '0.5em'}}
+                                            href="/sign-up">
                                         Sign Up
                                     </Button>
                                 </Menu.Item>
                             </Container>
                         </Menu>
-                        <PageHeading />
+                        <PageHeading/>
                     </Segment>
                 </Visibility>
 
@@ -281,10 +300,11 @@ class MobileContainer extends Component {
                                     <Icon name='sidebar'/>
                                 </Menu.Item>
                                 <Menu.Item position='right'>
-                                    <Button as='a' inverted>
+                                    <Button as='a' inverted href="/login">
                                         Log in
                                     </Button>
-                                    <Button as='a' inverted style={{marginLeft: '0.5em'}}>
+                                    <Button as='a' inverted style={{marginLeft: '0.5em'}}
+                                            href="/sign-up">
                                         Sign Up
                                     </Button>
                                 </Menu.Item>
