@@ -30,7 +30,7 @@ export default class CharityContainer extends Component {
 
         this.props.charity.methods.getCharityBalance().call()
             .then((response) => this.setState({
-                balance: response
+                balance: response / (10**18) // scale to ethereum 
             }));
 
 

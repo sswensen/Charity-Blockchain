@@ -29,7 +29,7 @@ export default class DonateToCharity extends Component {
 
         this.props.charity.methods.getMyDonation().call()
             .then((response) => this.setState({
-                yourContribution: response
+                yourContribution: response / (10**18)
             }));
     };
 

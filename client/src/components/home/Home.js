@@ -239,13 +239,19 @@ const Home = () => (
                             We Make Your Dreams Come True
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
-                            <Image src='https://semantic-ui.com/images/wireframe/short-paragraph.png' />
+                          Blockchain technology is disrupting many sectors of our economy.
+                          By using Blockchain technology we can improve the transparency
+                          of where your money goes to after it is donated. With the help
+                          of the truffle suite and solidity ethereum contracts, we propose a technical
+                          solution that will make the world a better place.
                         </p>
                         <Header as='h3' style={{fontSize: '2em'}}>
-                            We Make Bananas That Can Dance
+                            Founders of Transparent Charities
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
-                            <Image src='https://semantic-ui.com/images/wireframe/short-paragraph.png' />
+                            The creators of Transparent Charities are Scott Swensen, Claire Goldstein and Kenny Nguyen.
+                            They are students under the Computer Science Program @ Colorado State Unversity. These students
+                            are looking for a way to enable the betterment of society.
                         </p>
                     </Grid.Column>
                     <Grid.Column floated='right' width={6}>
@@ -273,11 +279,11 @@ const Home = () => (
                     </Grid.Column>
                     <Grid.Column style={{paddingBottom: '5em', paddingTop: '5em'}}>
                         <Header as='h3' style={{fontSize: '2em'}}>
-                            "I shouldn't have gone with their competitor."
+                            "Donate to these charities now!"
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
                             <i className="chart bar icon"/>
-                            <b>Nan</b> Chief Fun Officer Acme Toys
+                            <b>please</b>
                         </p>
                     </Grid.Column>
                 </Grid.Row>
@@ -287,14 +293,15 @@ const Home = () => (
         <Segment style={{padding: '5em 0em'}} vertical>
             <Container text>
                 <Header as='h3' style={{fontSize: '2em'}}>
-                    Breaking The Grid, Grabs Your Attention
+                    More about our motivation
                 </Header>
                 <p style={{fontSize: '1.33em'}}>
-                    <Image src='https://semantic-ui.com/images/wireframe/paragraph.png' />
+                    Money doesn't buy happiness, well unless you spend your money on others. New studies have shown that if you spend money on others or give money to charity it will increase your happiness more than spending that money on yourself (The Guardian). Grassroots and crowdfunding campaigns have opened an approachable way for people into interact with causes that they want to support. Many people are skeptical to donate money to a foundation because they do not know where the money will end up entirely.
                 </p>
-                <Button as='a' size='large'>
-                    Read More
-                </Button>
+                <p style={{fontSize: '1.33em'}}>
+                The Charity Platform is like GoFundMe, allowing users to create a campaign. When donating money to a campaign there are small percentages of money going to GoFundMe, but not the Charity Platform. When an organizer pulls their money out of a campaign there is a heavy transaction fee through the bank for GoFundMe, but not the Charity Platform. Donators do not see where the money goes after their donation on GoFundMe, but the Charity Platform uses Blockchain Technology to solve this problem with transparency of transactions.
+                </p>
+
 
                 <Divider
                     as='h4'
@@ -306,14 +313,15 @@ const Home = () => (
                 </Divider>
 
                 <Header as='h3' style={{fontSize: '2em'}}>
-                    Did We Tell You About Our Bananas?
+                    Our Goal
                 </Header>
                 <p style={{fontSize: '1.33em'}}>
-                    <Image src='https://semantic-ui.com/images/wireframe/paragraph.png' />
+                The team consisting of Scott Swensen, Claire Goldstein, and Kenny Nguyen wanted to base an idea off helping humanity, they concluded on creating a platform
+                for creating and donating to charities. The goal was using Blockchain technology to devise a clear and transparent platform for charities.
+                The platform would allow users to create charities for other people, letting other users see the description of the charity and how much has been donated.
+                The unique part of the platform is that everything is transparent allowing donors to see where and how the money is being allocated from the charity fund.
                 </p>
-                <Button as='a' size='large'>
-                    Read More
-                </Button>
+
             </Container>
         </Segment>
         <Footer/>
