@@ -14,7 +14,8 @@ export default class DonateToCharity extends Component {
             contractBalance: 0,
             yourContribution: 0,
             transactionAmounts: [],
-            transactionDescriptions: []
+            transactionDescriptions: [],
+            successMessage: ""
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -44,6 +45,7 @@ export default class DonateToCharity extends Component {
     handleSubmit(event) {
         event.preventDefault();
         var that = this;
+        var amount = this.state.value;
 
         this.props.web3.eth.getAccounts((error, accounts) => {
             var donatePromise = this.props.charity.methods.donate().send({
@@ -57,6 +59,9 @@ export default class DonateToCharity extends Component {
                         .then((response) => this.setState({
                             yourContribution: response
                         }));
+                    that.setState({
+                        successMessage: "Successfully donated " + amount + " Etherium!"
+                    })
                 });
 
             donatePromise.catch(function (error) {
@@ -92,13 +97,12 @@ export default class DonateToCharity extends Component {
                             <h3 className="sub header">{this.props.name}</h3>
                             <h3 className="sub header">Current amount donated: {this.state.contractBalance}</h3>
                             <h3 className="sub header">Your donation: {this.state.yourContribution}</h3>
-                            <h3 className="sub header">Your donation: {this.state.transactionDescriptions}</h3>
                         </div>
                     </h2>
 
                     <br/>
 
-                    <Form onSubmit={this.handleSubmit} error={!!this.state.errorMessage}>
+                    <Form onSubmit={this.handleSubmit} success={!!this.state.successMessage} error={!!this.state.errorMessage}>
                         <Form.Field>
                             <label>Donation amount:</label>
                             <input
@@ -107,6 +111,7 @@ export default class DonateToCharity extends Component {
                             />
                         </Form.Field>
                         <Message error header="Oops!" content={this.state.errorMessage}/>
+                        <Message success header="Success!" content={this.state.successMessage}/>
                         <div className="ui buttons">
                             <button className="ui button active" loading={this.state.loading}
                                     onClick={this.handleClose}>Cancel
