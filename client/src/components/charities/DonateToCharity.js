@@ -15,7 +15,8 @@ export default class DonateToCharity extends Component {
             yourContribution: 0,
             transactionAmounts: [],
             transactionDescriptions: [],
-            successMessage: ""
+            successMessage: "",
+            formLoading: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -48,6 +49,9 @@ export default class DonateToCharity extends Component {
         var amount = this.state.value;
 
         this.props.web3.eth.getAccounts((error, accounts) => {
+            this.setState({
+                formLoading: true
+            });
             var donatePromise = this.props.charity.methods.donate().send({
                 from: accounts[0],
                 value: this.props.web3.utils.toWei(this.state.value, "ether"),
@@ -55,6 +59,9 @@ export default class DonateToCharity extends Component {
             })
                 .then((result) => {
                     //console.log(result);
+                    this.setState({
+                        formLoading: false
+                    });
                     this.props.charity.methods.getMyDonation().call()
                         .then((response) => this.setState({
                             yourContribution: response
@@ -102,7 +109,7 @@ export default class DonateToCharity extends Component {
 
                     <br/>
 
-                    <Form onSubmit={this.handleSubmit} success={!!this.state.successMessage} error={!!this.state.errorMessage}>
+                    <Form onSubmit={this.handleSubmit} loading={this.state.formLoading} success={!!this.state.successMessage} error={!!this.state.errorMessage}>
                         <Form.Field>
                             <label>Donation amount:</label>
                             <input
