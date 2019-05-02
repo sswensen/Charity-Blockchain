@@ -58,8 +58,8 @@ export default class CharityContainer extends Component {
                 </Card.Content>
                 <div className="extra content">
                     <div className="ui two buttons">
-                        <DonateToCharity name={this.state.name} convert={this.props.convert}/>
-                        <Charity name={this.state.name} description={this.state.description} balance={this.state.balance} convert={this.props.convert}/>
+                        <DonateToCharity name={this.state.name} convert={this.props.convert} web3={this.props.web3} charity={this.props.charity}/>
+                        <Charity name={this.state.name} description={this.state.description} balance={this.state.balance} convert={this.props.convert} />
                     </div>
                 </div>
             </Card>

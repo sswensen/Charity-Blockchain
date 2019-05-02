@@ -194,11 +194,12 @@ class CardContainer extends Component {
         // Convert the charities object to an array so we can map
         const objectToArray = Object.keys(this.props.drizzle.contracts).map(i => this.props.drizzle.contracts[i]);
 
+
         return (
             <div>
                 <div className="ui three cards">
                     {objectToArray.map((c) =>
-                        <CharityContainer key={c.address} charity={c} convert={this.convert}/>
+                        <CharityContainer key={c.address} charity={c} convert={this.convert} web3={this.props.drizzle.web3}/>
                     )}
                 </div>
 
