@@ -196,7 +196,7 @@ class CardContainer extends Component {
 
         return (
             <div>
-                <div className="ui three cards">
+                <div className="ui three cards stackable">
                     {objectToArray.map((c) =>
                         <CharityContainer key={c.address} charity={c} convert={this.convert} web3={this.props.drizzle.web3}/>
                     )}

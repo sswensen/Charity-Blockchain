@@ -4,11 +4,16 @@ import Charity from "./Charity";
 import DonateToCharity from "./DonateToCharity";
 
 export default class CharityContainer extends Component {
-    state = {
-        name: "",
-        description: "This is a test",
-        balance: 0
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: "",
+            description: "This is a test",
+            balance: 0
+        };
+
+        this.updateCharityBalance = this.updateCharityBalance.bind(this);
+    }
 
     componentDidMount() {
         console.log("Received charity from CardContainer: ", this.props.charity);
@@ -25,7 +30,7 @@ export default class CharityContainer extends Component {
 
         this.props.charity.methods.getCharityBalance().call()
             .then((response) => this.setState({
-                balance: response
+                balance: response / (10**18) // scale to ethereum
             }));
 
 
@@ -44,6 +49,13 @@ export default class CharityContainer extends Component {
         // });
     }
 
+    updateCharityBalance() {
+        this.props.charity.methods.getCharityBalance().call()
+            .then((response) => this.setState({
+                balance: response / (10**18)
+            }));
+    }
+
     render() {
         return (
             <Card>
@@ -58,8 +70,8 @@ export default class CharityContainer extends Component {
                 </Card.Content>
                 <div className="extra content">
                     <div className="ui two buttons">
-                        <DonateToCharity name={this.state.name} web3={this.props.web3} convert={this.props.convert}/>
-                        <Charity name={this.state.name} description={this.state.description} balance={this.state.balance} convert={this.props.convert}/>
+                        <DonateToCharity name={this.state.name} charity={this.props.charity} web3={this.props.web3} balance={this.state.balance} updateCharityBalance={this.updateCharityBalance} convert={this.props.convert}/>
+                        <Charity name={this.state.name} charity={this.props.charity} description={this.state.description} balance={this.state.balance} convert={this.props.convert}/>
                     </div>
                 </div>
             </Card>
