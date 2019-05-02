@@ -10,7 +10,9 @@ export default class DonateToCharity extends Component {
             message: "",
             players: [],
             errorMessage: "",
-            value: 0
+            value: 0,
+            contractBalance: 0,
+            yourContribution: 0
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -21,6 +23,16 @@ export default class DonateToCharity extends Component {
         this.setState({modalOpen: true});
         //const numPlayers = await trojanSecret.methods.memberCount().call();
         //const players = this.props.convert(await trojanSecret.methods.listPlayers().call());
+
+        this.props.charity.methods.getCharityBalance().call()
+            .then((response) => this.setState({
+                contractBalance: response
+            }));
+
+        this.props.charity.methods.getMyDonation().call()
+            .then((response) => this.setState({
+                yourContribution: response
+            }));
     };
 
     handleChange(event) {
@@ -28,19 +40,31 @@ export default class DonateToCharity extends Component {
     }
 
     handleSubmit(event) {
-        console.log("Donation sub");
         event.preventDefault();
+        var that = this;
 
         this.props.web3.eth.getAccounts((error, accounts) => {
-            this.props.charity.methods.donate().send({
-                from: accounts[7],
+            var donatePromise = this.props.charity.methods.donate().send({
+                from: accounts[0],
                 value: this.props.web3.utils.toWei(this.state.value, "ether"),
                 gas: "4500000"
             })
                 .then((result) => {
-                    console.log(result);
+                    //console.log(result);
+                    this.props.charity.methods.getMyDonation().call()
+                        .then((response) => this.setState({
+                            yourContribution: response
+                        }));
+                });
+
+            donatePromise.catch(function (error) {
+                console.log(error);
+                that.setState({
+                    errorMessage: error.toString()
                 })
-        })
+            });
+        });
+
     }
 
 
@@ -64,6 +88,8 @@ export default class DonateToCharity extends Component {
                         <div className="content">
                             Donate ${this.state.value}
                             <h3 className="sub header">{this.props.name}</h3>
+                            <h3 className="sub header">Current amount donated: {this.state.contractBalance}</h3>
+                            <h3 className="sub header">Your donation: {this.state.yourContribution}</h3>
                         </div>
                     </h2>
 
