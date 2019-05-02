@@ -19,6 +19,33 @@ export default class DonateToCharity extends Component {
 
     handleClose = () => this.setState({modalOpen: false});
 
+    onSubmit = async event => {
+          event.preventDefault();
+          this.setState({
+            errorMessage: "",
+            message: "waiting for blockchain transaction to complete..."
+          });
+          try {
+            const accounts = await this.props.web3.eth.getAccounts();
+            console.log(Number.parseInt(this.state.value));
+            //console.log(this.state.value);
+            await this.props.charity.methods.donate(Number.parseInt(this.state.value)) // contains the donation Amount
+                  .send({
+                    from: accounts[1]
+                  });
+
+
+            this.setState({
+              message: "You have donated"
+            });
+          } catch (err) {
+            this.setState({
+              errorMessage: err.message,
+              message: "Donation Error"
+            });
+          }
+    };
+
     render() {
         return (
             <Modal

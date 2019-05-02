@@ -92,23 +92,22 @@ contract Charity3 {
 
 	// ------------------------ ACTIONS ------------------------ //
 
-	function donate() public payable ongoing returns (bool) {
-		uint current = donations[msg.sender] + msg.value;
+	function donate(uint amount) public payable ongoing returns (bool) {
+		uint current = donations[msg.sender] + amount;
 		if (donations[msg.sender] > 0) {
 			donations[msg.sender] = current;
 		} else {
 			donations[msg.sender] = current;
 			donators.push(msg.sender);
 		}
-		balance += msg.value;
+		balance += amount;
 
 		transact(msg.value, toAsciiString(msg.sender));
 
-		emit DonateEvent(msg.sender, msg.value);
+		emit DonateEvent(msg.sender, amount);
 
 		return true;
 	}
-
 
 	function withdrawl(uint amount, string reason, address sender) public only_owner(sender) returns (bool) {
 		require(balance >= amount);
