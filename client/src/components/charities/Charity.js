@@ -57,7 +57,7 @@ export default class Charity extends Component {
                                 <br/>
                                 <List>
                                     {this.state.transactionAmounts.map((t) =>
-                                        <Item key={t + Math.random()}>{t}</Item>
+                                        <Item key={t + Math.random()}>{t/(10**18)}</Item>
                                     )}
                                 </List>
                             </h3>
