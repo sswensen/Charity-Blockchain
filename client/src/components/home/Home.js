@@ -249,8 +249,9 @@ const Home = () => (
                         </p>
                     </Grid.Column>
                     <Grid.Column floated='right' width={6}>
-                        <Image rounded size='large'
-                               src='https://www.ethereum.org/images/logos/ETHEREUM-LOGO_PORTRAIT_Black_small.png'/>
+                        <Image rounded size='medium'
+                               //src='https://www.ethereum.org/images/logos/ETHEREUM-LOGO_PORTRAIT_Black_small.png'/>
+                               src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/2000px-Ethereum_logo_2014.svg.png'/>
                     </Grid.Column>
                 </Grid.Row>
                 {/*<Grid.Row>*/}
