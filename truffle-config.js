@@ -17,8 +17,10 @@
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
  */
+var fs = require("fs");
 const HDWalletProvider = require("truffle-hdwallet-provider");
-const mnemonic = "";
+const mnemonic = fs.readFileSync('./mnemonic.txt').toString();
+console.log(mnemonic);
 
 // const HDWalletProvider = require('truffle-hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
