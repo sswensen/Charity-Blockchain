@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Button, Header, Icon, Modal} from "semantic-ui-react";
+import {Button, Header, Icon, Modal, List, Item} from "semantic-ui-react";
 
 export default class Charity extends Component {
     state = {
@@ -8,6 +8,7 @@ export default class Charity extends Component {
         message: "",
         players: [],
         errorMessage: "",
+        transactionAmounts: []
     };
 
     handleOpen = async () => {
@@ -21,6 +22,11 @@ export default class Charity extends Component {
         this.setState({
             //description: receivedDetails,
         });
+
+        this.props.charity.methods.getTranscationAmounts().call()
+            .then((response) => this.setState({
+                transactionAmounts: this.props.convert(response)
+            }));
     };
 
 
@@ -44,7 +50,18 @@ export default class Charity extends Component {
                         <div className="content">
                             {this.props.name}
                             <h3 className="sub header">{this.props.description}</h3>
+                            <br/>
                             <h4 className="sub header">Current amount donated: {this.props.balance}</h4>
+                            <br/>
+                            <h3 className="sub header">Recent donations:
+                                <br/>
+                                <List>
+                                    {this.state.transactionAmounts.map((t) =>
+                                        <Item key={t + Math.random()}>{t}</Item>
+                                    )}
+                                </List>
+                            </h3>
+
                         </div>
                     </h2>
                 </Modal.Content>

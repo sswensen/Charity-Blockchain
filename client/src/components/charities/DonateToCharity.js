@@ -12,7 +12,9 @@ export default class DonateToCharity extends Component {
             errorMessage: "",
             value: 0,
             contractBalance: 0,
-            yourContribution: 0
+            yourContribution: 0,
+            transactionAmounts: [],
+            transactionDescriptions: []
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -90,6 +92,7 @@ export default class DonateToCharity extends Component {
                             <h3 className="sub header">{this.props.name}</h3>
                             <h3 className="sub header">Current amount donated: {this.state.contractBalance}</h3>
                             <h3 className="sub header">Your donation: {this.state.yourContribution}</h3>
+                            <h3 className="sub header">Your donation: {this.state.transactionDescriptions}</h3>
                         </div>
                     </h2>
 
