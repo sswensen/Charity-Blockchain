@@ -50,7 +50,9 @@ export default class DonateToCharity extends Component {
 
         this.props.web3.eth.getAccounts((error, accounts) => {
             this.setState({
-                formLoading: true
+                formLoading: true,
+                successMessage: "",
+                errorMessage: ""
             });
             var donatePromise = this.props.charity.methods.donate().send({
                 from: accounts[0],
@@ -74,7 +76,8 @@ export default class DonateToCharity extends Component {
             donatePromise.catch(function (error) {
                 console.log(error);
                 that.setState({
-                    errorMessage: error.toString()
+                    errorMessage: error.toString(),
+                    formLoading: false
                 })
             });
         });
