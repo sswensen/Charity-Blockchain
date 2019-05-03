@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Button, Container, Header, Icon, Menu, Responsive, Segment, Visibility, Sidebar} from "semantic-ui-react";
+import {Button, Container, Header, Icon, Menu, Responsive, Segment, Sidebar, Visibility} from "semantic-ui-react";
 import CardContainer from "./CardContainer";
 import PropTypes from "prop-types";
 import Footer from "../footer/Footer";
@@ -42,7 +42,17 @@ class Charities extends Component {
 
         return (
             <ResponsiveContainer>
-                <Segment style={{padding: '5em 0em'}} vertical secondary>
+                <Segment style={{padding: '1em 0em'}} vertical secondary>
+                    <Container>
+                        <div>
+                            <Button className="ui primary positive labeled icon disabled">
+                                <i className="plus icon"></i>
+                                Add Charity
+                            </Button>
+                        </div>
+                    </Container>
+                </Segment>
+                <Segment style={{padding: '2em 0em'}} vertical secondary>
 
                     <Container>
                         <div>
@@ -53,7 +63,7 @@ class Charities extends Component {
                         </div>
                     </Container>
                 </Segment>
-                <Footer />
+                <Footer/>
             </ResponsiveContainer>
         );
     }
@@ -136,16 +146,17 @@ class DesktopContainer extends Component {
                                 <a className="item" href="/about">About</a>
 
                                 <Menu.Item position='right'>
-                                    <Button as='a' inverted={!fixed}>
+                                    <Button as='a' inverted={!fixed} href="/login">
                                         Log in
                                     </Button>
-                                    <Button as='a' inverted={!fixed} primary={fixed} style={{marginLeft: '0.5em'}}>
+                                    <Button as='a' inverted={!fixed} primary={fixed} style={{marginLeft: '0.5em'}}
+                                            href="/sign-up">
                                         Sign Up
                                     </Button>
                                 </Menu.Item>
                             </Container>
                         </Menu>
-                        <PageHeading />
+                        <PageHeading/>
                     </Segment>
                 </Visibility>
 
@@ -219,10 +230,11 @@ class MobileContainer extends Component {
                                     <Icon name='sidebar'/>
                                 </Menu.Item>
                                 <Menu.Item position='right'>
-                                    <Button as='a' inverted>
+                                    <Button as='a' inverted href="/login">
                                         Log in
                                     </Button>
-                                    <Button as='a' inverted style={{marginLeft: '0.5em'}}>
+                                    <Button as='a' inverted style={{marginLeft: '0.5em'}}
+                                            href="/sign-up">
                                         Sign Up
                                     </Button>
                                 </Menu.Item>
