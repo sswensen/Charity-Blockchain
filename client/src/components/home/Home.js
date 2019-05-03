@@ -276,13 +276,13 @@ const Home = () => (
                 <Grid.Row textAlign='center'>
                     <Grid.Column style={{paddingBottom: '5em', paddingTop: '5em'}}>
                         <Header as='h3' style={{fontSize: '2em'}}>
-                            "What a Company"
+                            Donate Etherium to your favorite Charities
                         </Header>
-                        <p style={{fontSize: '1.33em'}}>That is what they all say about us</p>
+                        <p style={{fontSize: '1.33em'}}> <a href='/charities'>Donate Now!</a></p>
                     </Grid.Column>
                     <Grid.Column style={{paddingBottom: '5em', paddingTop: '5em'}}>
                         <Header as='h3' style={{fontSize: '2em'}}>
-                            "Donate to these charities now!"
+                          Create a Charity or Campaign!
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
                             <i className="heart outline icon"/>
@@ -299,45 +299,21 @@ const Home = () => (
                     More about our motivation
                 </Header>
                 <p style={{fontSize: '1.33em'}}>
-                    Money doesn't buy happiness, well unless you spend your money on others. New studies have shown that
-                    if you spend money on others or give money to charity it will increase your happiness more than
-                    spending that money on yourself (The Guardian). Grassroots and crowdfunding campaigns have opened an
-                    approachable way for people into interact with causes that they want to support. Many people are
-                    skeptical to donate money to a foundation because they do not know where the money will end up
-                    entirely.
-                </p>
-                <p style={{fontSize: '1.33em'}}>
-                    The Charity Platform is like GoFundMe, allowing users to create a campaign. When donating money to a
-                    campaign there are small percentages of money going to GoFundMe, but not the Charity Platform. When
-                    an organizer pulls their money out of a campaign there is a heavy transaction fee through the bank
-                    for GoFundMe, but not the Charity Platform. Donators do not see where the money goes after their
-                    donation on GoFundMe, but the Charity Platform uses Blockchain Technology to solve this problem with
-                    transparency of transactions.
+                Money does not buy happiness unless you spend your money on others. New studies have shown that if you spend money on others or give money to charity it will increase your happiness more than spending that money on yourself. Grassroots and crowdfunding campaigns have opened an approachable way for people to interact with causes that they want to support. Many people are skeptical to donate money to a foundation because they do not know where the money will end up entirely. The Charity Platform is similar to GoFundMe, allowing users to create a campaign. When donating money to a campaign there are small percentages of money going to GoFundMe, but not the Transparent Charity Platform. When an organizer pulls their money out of a campaign there is a heavy transaction fee through the bank for GoFundMe, but not the Charity Platform. Donators do not see where the money goes after their donation on GoFundMe, but the Charity Platform uses Blockchain Technology to solve this problem with the transparency of transactions.
+
                 </p>
 
 
                 <Divider
-                    as='h4'
+                    as='h2'
                     className='header'
                     horizontal
                     style={{margin: '3em 0em', textTransform: 'uppercase'}}
                 >
-                    <a href='/company'>More information</a>
+                    <a href='/company'>Click for more information </a>
                 </Divider>
 
-                <Header as='h3' style={{fontSize: '2em'}}>
-                    Our Goal
-                </Header>
-                <p style={{fontSize: '1.33em'}}>
-                    The team consisting of Scott Swensen, Claire Goldstein, and Kenny Nguyen wanted to base an idea off
-                    helping humanity, they concluded on creating a platform
-                    for creating and donating to charities. The goal was using Blockchain technology to devise a clear
-                    and transparent platform for charities.
-                    The platform would allow users to create charities for other people, letting other users see the
-                    description of the charity and how much has been donated.
-                    The unique part of the platform is that everything is transparent allowing donors to see where and
-                    how the money is being allocated from the charity fund.
-                </p>
+
 
             </Container>
         </Segment>

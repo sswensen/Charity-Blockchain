@@ -31,107 +31,63 @@ class Company extends Component {
     render() {
         return (
             <ResponsiveContainer>
-                <Segment style={{padding: '5em 0em'}} vertical>
-                    <Grid container stackable verticalAlign='middle'>
-                        <Grid.Row>
-                            <Grid.Column width={10}>
-                                <Header as='h3' style={{fontSize: '2em'}}>
-                                    We Make Your Dreams Come True
-                                </Header>
-                                <p style={{fontSize: '1.33em'}}>
-                                    Blockchain technology is disrupting many sectors of our economy.
-                                    By using Blockchain technology we can improve the transparency
-                                    of where your money goes to after it is donated. With the help
-                                    of the truffle suite and solidity ethereum contracts, we propose a technical
-                                    solution that will make the world a better place.
-                                </p>
-                                <Header as='h3' style={{fontSize: '2em'}}>
-                                    Founders of Transparent Charities
-                                </Header>
-                                <p style={{fontSize: '1.33em'}}>
-                                    The creators of Transparent Charities are Scott Swensen, Claire Goldstein and Kenny
-                                    Nguyen.
-                                    They are students under the Computer Science Program @ Colorado State Unversity.
-                                    These students
-                                    are looking for a way to enable the betterment of society.
-                                </p>
-                            </Grid.Column>
-                            <Grid.Column floated='right' width={6}>
-                                <Image rounded size='medium'
-                                    //src='https://www.ethereum.org/images/logos/ETHEREUM-LOGO_PORTRAIT_Black_small.png'/>
-                                       src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/2000px-Ethereum_logo_2014.svg.png'/>
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-                </Segment>
 
-                <Segment style={{padding: '0em'}} vertical>
-                    <Grid celled='internally' columns='equal' stackable>
-                        <Grid.Row textAlign='center'>
-                            <Grid.Column style={{paddingBottom: '5em', paddingTop: '5em'}}>
-                                <Header as='h3' style={{fontSize: '2em'}}>
-                                    "What a Company"
-                                </Header>
-                                <p style={{fontSize: '1.33em'}}>That is what they all say about us</p>
-                            </Grid.Column>
-                            <Grid.Column style={{paddingBottom: '5em', paddingTop: '5em'}}>
-                                <Header as='h3' style={{fontSize: '2em'}}>
-                                    "Donate to these charities now!"
-                                </Header>
-                                <p style={{fontSize: '1.33em'}}>
-                                    <i className="chart bar icon"/>
-                                    <b>please</b>
-                                </p>
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-                </Segment>
+
 
                 <Segment style={{padding: '5em 0em'}} vertical>
                     <Container text>
                         <Header as='h3' style={{fontSize: '2em'}}>
-                            More about our motivation
+                            Abstract
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
-                            Money doesn't buy happiness, well unless you spend your money on others. New studies have
-                            shown that if you spend money on others or give money to charity it will increase your
-                            happiness more than spending that money on yourself (The Guardian). Grassroots and
-                            crowdfunding campaigns have opened an approachable way for people into interact with causes
-                            that they want to support. Many people are skeptical to donate money to a foundation because
-                            they do not know where the money will end up entirely.
-                        </p>
-                        <p style={{fontSize: '1.33em'}}>
-                            The Charity Platform is like GoFundMe, allowing users to create a campaign. When donating
-                            money to a campaign there are small percentages of money going to GoFundMe, but not the
-                            Charity Platform. When an organizer pulls their money out of a campaign there is a heavy
-                            transaction fee through the bank for GoFundMe, but not the Charity Platform. Donators do not
-                            see where the money goes after their donation on GoFundMe, but the Charity Platform uses
-                            Blockchain Technology to solve this problem with transparency of transactions.
-                        </p>
 
+                        Blockchain technology is disrupting many sectors of our economy.
+                        By using blockchain technology, charities can be transparent on where the money goes to after it is donated.
+                        With the help of the Truffle Suite and Solidity Ethereum contracts, we proposed a technical solution that will help societal and technological development.
 
-                        <Divider
-                            as='h4'
-                            className='header'
-                            horizontal
-                            style={{margin: '3em 0em', textTransform: 'uppercase'}}
-                        >
-                            <a href='/'>More information</a>
-                        </Divider>
-
-                        <Header as='h3' style={{fontSize: '2em'}}>
-                            Our Goal
+                        <br/>
+                        <br/>
+                        <Header as='h3' style={{fontSize: '1em'}}>
+                              Motivation
                         </Header>
-                        <p style={{fontSize: '1.33em'}}>
-                            The team consisting of Scott Swensen, Claire Goldstein, and Kenny Nguyen wanted to base an
-                            idea off helping humanity, they concluded on creating a platform
-                            for creating and donating to charities. The goal was using Blockchain technology to devise a
-                            clear and transparent platform for charities.
-                            The platform would allow users to create charities for other people, letting other users see
-                            the description of the charity and how much has been donated.
-                            The unique part of the platform is that everything is transparent allowing donors to see
-                            where and how the money is being allocated from the charity fund.
+
+                        Money does not buy happiness unless you spend your money on others. New studies have shown that if you spend money on others or give money to charity it will increase your happiness more than spending that money on yourself (The Guardian). Grassroots and crowdfunding campaigns have opened an approachable way for people to interact with causes that they want to support. Many people are skeptical to donate money to a foundation because they do not know where the money will end up entirely. The Charity Platform is similar to GoFundMe, allowing users to create a campaign. When donating money to a campaign there are small percentages of money going to GoFundMe, but not the Transparent Charity Platform. When an organizer pulls their money out of a campaign there is a heavy transaction fee through the bank for GoFundMe, but not the Charity Platform. Donators do not see where the money goes after their donation on GoFundMe, but the Charity Platform uses Blockchain Technology to solve this problem with the transparency of transactions.
+
+                        <br/>
+                        <br/>
+                        <Header as='h5' style={{fontSize: '1em'}}>
+                        Goals
+                        </Header>
+                        The team, consisting of Scott Swensen, Claire Goldstein, and Kenny Nguyen wanted to base an idea of helping humanity, they concluded on creating a platform for creating and donating to charities. The goal was using Blockchain technology to devise a clear, transparent platform for charity donations. The platform would allow users to create charities for other people, letting other users see the description of the charity and how much has been donated. The unique part of the platform is that everything is transparent allowing donors to see where and how the money is being allocated from the charity fund.
+                        <br/>
+                        <br/>
+                        <Header as='h5' style={{fontSize: '1em'}}>
+                        Architect - Planning
+                        </Header>
+                        The team developed the Charity Platform using a tech stack consisting of Solidity, React, Ganache, Truffle, Express, and Drizzle. The root of the solution comes from the smart contracts that allow donator and owner functionalities. Backend development started out on Etherium’s Remix platform to test the contracts functions in the early development stage. We then integrated with the Truffle Suite. We got our smart contracts up and working with Ganache, a test blockchain that can be deployed locally. The testing functionality is handled by Truffle and Ganache that has a connection with the Mocha and Chai testing frameworks to test integration onto the local blockchain. We used Open Zeppelin libraries to handle our conversions of Ether and to monitor the balances of our contracts.  The front end was created with ReactJS.  We used React Router to simulate different pages within our Single Page App (SPA) to create a layout the use would be more accustomed to. To make an appealing aesthetic for our app, we used SemanticUI for frontend styling. Because of the number of packages we had at our disposal, we had many ideas on how to compile our frontend and backend applications together. We decided against using Webpack, a common module bundler for React apps, to compile our code because of the added syntax changes and dependencies that would be included in our app. The goal is to keep things as simple as possible.
+                        After many hours of research, we stumbled upon Drizzle, a new frontend framework from the Truffle Suite that helps to simplify the process of connecting the Solidity contracts to web3 and the ReactJS. There was an initial learning curve, but it made our frontend to backend integration seamless.  Finally, we used an Express Server to serve the React app when running on a production server, in this case, Heroku. In our development and testing phases, we used NPM for package management and bundling our project.
+                        <br/>
+                        <br/>
+                        <Header as='h5' style={{fontSize: '1em'}}>
+                        Technical Solutions
+                        </Header>
+                        While trying to figure out how to get our contracts to talk to the frontend React code we ran into a plethora of issues.  We were struggling with how to connect our ABI,  how to connect Web3 and in general, how to get the information of the contract to show up on the website. We watched a lot of Youtube videos, but the main problem we kept running into was downloading all the dependencies. We would get the example to work but then we wouldn’t be able to figure out what dependencies we needed to fit into our contracts and our React.js code. We solved our problem by going beyond the scope of the class and learned how to use Drizzle. Drizzle is a Truffle Suite add on that helps to connect the frontend to the contract ABIs. The best part about Drizzle is that everything comes pre-packaged. The only thing that needed to be installed was Drizzle itself. Drizzle takes care of the ABI update every time the project migrates. Thus, the ABI is always accounted for and up to date. Drizzle also takes care of installing and launching web3.js. There was a little bit of a learning curve when trying to call the contract functions and binding them back to React elements, but after a few hours of hard work, we got it working.
+                        <br/>
+                        <br/>
+                        Overall this project required a lot of learning. Many of the technologies used were bleeding edge, thus, requiring us to create solutions that probably have never been seen before. Our initial plans were much loftier than what actually happened in our project. We did a lot of learning on how Solidity contracts interacted with each other, the users, and with web3. We had many work days where would remove more than we would add the project. These times felt hopeless, but without them, we would not have learned about Drizzle, Web3, and many other bleeding edge technologies. The simplification of Web3 made our lives easier. Our team learned valuable information about the benefits of testing. Since we could not solely rely on Remix, many Truffle tests were written to ensure the functionality of our contracts.  Mocha testing helped us trust that our contracts worked so that we could focus our energy on frontend integration. The biggest thing our team has taken away from this project is just how frustrating, but also exciting, working with new technology can be.  We have had many moments when we wished that Solidity and Truffle was a more developed language like the object-oriented languages we are accustomed to. We adapted to the obstacles that were presented to us and proudly created a functional application.
+                        <br/>
+                        <br/>
+                        <Header as='h5' style={{fontSize: '1em'}}>
+                        Conclusion
+                        </Header>
+                        While our solution may not be flawless, we have done the initial steps to creating a decentralized application that encourages people to donate to charities. With the transparency of blockchain technology, we created a project to support and make the world a better place. The project currently is at a point where it can be used, but there are many more features to be added. To make this a successful platform, mass marketing has to be involved to convince individuals that blockchain technology is the answer to 100% transparency.
+
                         </p>
+
+
+
+
+
 
                     </Container>
                 </Segment>
