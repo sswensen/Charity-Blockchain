@@ -114,7 +114,6 @@ contract Charity {
 		require(balance >= amount);
 		transact(amount, reason);
 		msg.sender.transfer(amount);
-		balance = balance - amount;
 		emit WithdrawalEvent(msg.sender, amount, reason);
 		return true;
 	}
