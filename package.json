@@ -5,7 +5,8 @@
   "private": true,
   "homepage": "https://golden-mirage.herokuapp.com/",
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "truffle-hdwallet-provider": "^1.0.8"
   },
   "devDependencies": {
     "chai": "^4.2.0",

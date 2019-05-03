@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Button, Header, Icon, Modal, Form, Message} from "semantic-ui-react";
+import {Button, Header, Icon, Modal, List, Item} from "semantic-ui-react";
 
 export default class Charity extends Component {
     state = {
@@ -8,6 +8,7 @@ export default class Charity extends Component {
         message: "",
         players: [],
         errorMessage: "",
+        transactionAmounts: []
     };
 
     handleOpen = async () => {
@@ -21,6 +22,11 @@ export default class Charity extends Component {
         this.setState({
             //description: receivedDetails,
         });
+
+        this.props.charity.methods.getTranscationAmounts().call()
+            .then((response) => this.setState({
+                transactionAmounts: this.props.convert(response)
+            }));
     };
 
 
@@ -31,39 +37,37 @@ export default class Charity extends Component {
             <Modal
                 trigger={
                     <div className="ui basic blue button" onClick={this.handleOpen}>Details</div>
-
                 }
                 open={this.state.modalOpen}
                 onClose={this.handleClose}
+                closeIcon
             >
                 <Header icon="browser" content="Charity Details"/>
                 <Modal.Content>
 
-                    <h4>{this.props.name}</h4>
-                    <br />
-                    <h3>
-                        {this.props.description}
-                    </h3>
+                    <h2 className="ui icon header center aligned">
+                        <i className="copy outline icon"/>
+                        <div className="content">
+                            {this.props.name}
+                            <h3 className="sub header">{this.props.description}</h3>
+                            <br/>
+                            <h4 className="sub header">Current amount donated: {this.props.balance} Ethereum.</h4>
+                            <br/>
+                            <h3 className="sub header">Recent donations:
+                                <br/>
+                                <List>
+                                    {this.state.transactionAmounts.map((t) =>
+                                        <Item key={t + Math.random()}>{t/(10**18)} Eth</Item>
+                                    )}
+                                </List>
+                            </h3>
 
-                    <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
-                        <Form.Field>
-                            <label>Donation amount:</label>
-                            <input
-                                placeholder="Name"
-                                onChange={event => this.setState({ value: event.target.value })}
-                            />
-                        </Form.Field>
-                        <Message error header="Oops!" content={this.state.errorMessage} />
-                        <div className="ui buttons">
-                            <button className="ui button active" loading={this.state.loading} onClick={this.handleClose}>Cancel</button>
-                            <div className="or"/>
-                            <button className="ui positive button" loading={this.state.loading} type="submit">Donate</button>
                         </div>
-                    </Form>
+                    </h2>
                 </Modal.Content>
                 <Modal.Actions>
                     <Button color="red" onClick={this.handleClose} inverted>
-                        <Icon name="cancel" /> Close
+                        <Icon name="cancel"/> Close
                     </Button>
                 </Modal.Actions>
             </Modal>

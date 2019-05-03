@@ -2,19 +2,80 @@ import React, {Component} from "react";
 import {Button, Header, Icon, Modal, Form, Message} from "semantic-ui-react";
 
 export default class DonateToCharity extends Component {
-    state = {
-        modalOpen: false,
-        numPlayers: "0",
-        message: "",
-        players: [],
-        errorMessage: "",
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalOpen: false,
+            message: "",
+            errorMessage: "",
+            value: 0,
+            yourContribution: 0,
+            transactionAmounts: [],
+            transactionDescriptions: [],
+            successMessage: "",
+            formLoading: false
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
     handleOpen = async () => {
         this.setState({modalOpen: true});
         //const numPlayers = await trojanSecret.methods.memberCount().call();
         //const players = this.props.convert(await trojanSecret.methods.listPlayers().call());
+
+        this.props.charity.methods.getMyDonation().call()
+            .then((response) => this.setState({
+                yourContribution: response / (10**18)
+            }));
     };
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        var that = this;
+        var amount = this.state.value;
+
+        this.props.web3.eth.getAccounts((error, accounts) => {
+            this.setState({
+                formLoading: true,
+                successMessage: "",
+                errorMessage: ""
+            });
+            var donatePromise = this.props.charity.methods.donate().send({
+                from: accounts[0],
+                value: this.props.web3.utils.toWei(this.state.value, "ether"),
+                gas: "4500000"
+            })
+                .then((result) => {
+                    //console.log(result);
+                    this.setState({
+                        formLoading: false
+                    });
+                    this.props.charity.methods.getMyDonation().call()
+                        .then((response) => this.setState({
+                            yourContribution: response
+                        }));
+                    that.setState({
+                        successMessage: "Successfully donated " + amount + " Ethereum!"
+                    });
+                    this.props.updateCharityBalance();
+                });
+
+            donatePromise.catch(function (error) {
+                console.log(error);
+                that.setState({
+                    errorMessage: error.toString(),
+                    formLoading: false
+                })
+            });
+        });
+
+    }
 
 
     handleClose = () => this.setState({modalOpen: false});
@@ -28,25 +89,32 @@ export default class DonateToCharity extends Component {
                 }
                 open={this.state.modalOpen}
                 onClose={this.handleClose}
+                closeIcon
             >
-                <Header icon="browser" content="Charity Details"/>
+                <Header icon="dollar sign" content="Donate to Charity"/>
                 <Modal.Content>
+                    <h2 className="ui icon header center aligned">
+                        <i className="money bill alternate outline icon"/>
+                        <div className="content">
+                            Donate {this.state.value} Ethereum
+                            <h3 className="sub header">{this.props.name}</h3>
+                            <h3 className="sub header">Current amount donated: {this.props.balance} Ethereum.</h3>
+                            <h3 className="sub header">Your donation: {this.state.yourContribution} Ethereum.</h3>
+                        </div>
+                    </h2>
 
-                    <h4>{this.props.name}</h4>
                     <br/>
-                    <h3>
-                        {this.props.description}
-                    </h3>
 
-                    <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
+                    <Form onSubmit={this.handleSubmit} loading={this.state.formLoading} success={!!this.state.successMessage} error={!!this.state.errorMessage}>
                         <Form.Field>
                             <label>Donation amount:</label>
                             <input
-                                placeholder="Name"
+                                placeholder="Amount"
                                 onChange={event => this.setState({value: event.target.value})}
                             />
                         </Form.Field>
                         <Message error header="Oops!" content={this.state.errorMessage}/>
+                        <Message success header="Success!" content={this.state.successMessage}/>
                         <div className="ui buttons">
                             <button className="ui button active" loading={this.state.loading}
                                     onClick={this.handleClose}>Cancel

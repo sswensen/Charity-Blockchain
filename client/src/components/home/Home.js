@@ -54,9 +54,9 @@ const HomepageHeading = ({mobile}) => (
             }}
         />
         <a href="./charities">
-            <Button primary size='huge'>
+            <Button labeled primary size='huge'>
+                <Icon name='gem'/>
                 Get Started
-                <Icon name='right arrow'/>
             </Button>
         </a>
     </Container>
@@ -123,10 +123,11 @@ class DesktopContainer extends Component {
                                 <a className="item" href="/about">About</a>
 
                                 <Menu.Item position='right'>
-                                    <Button as='a' inverted={!fixed}>
+                                    <Button as='a' inverted={!fixed} href="/login">
                                         Log in
                                     </Button>
-                                    <Button as='a' inverted={!fixed} primary={fixed} style={{marginLeft: '0.5em'}}>
+                                    <Button as='a' inverted={!fixed} primary={fixed} style={{marginLeft: '0.5em'}}
+                                            href="/sign-up">
                                         Sign Up
                                     </Button>
                                 </Menu.Item>
@@ -195,10 +196,11 @@ class MobileContainer extends Component {
                                     <Icon name='sidebar'/>
                                 </Menu.Item>
                                 <Menu.Item position='right'>
-                                    <Button as='a' inverted>
+                                    <Button as='a' inverted href="/login">
                                         Log in
                                     </Button>
-                                    <Button as='a' inverted style={{marginLeft: '0.5em'}}>
+                                    <Button as='a' inverted style={{marginLeft: '0.5em'}}
+                                            href="/sign-up">
                                         Sign Up
                                     </Button>
                                 </Menu.Item>
@@ -239,19 +241,26 @@ const Home = () => (
                             We Make Your Dreams Come True
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
-                            We can give your company superpowers to do things that they never thought possible.
+                            Blockchain technology is disrupting many sectors of our economy.
+                            By using Blockchain technology we can improve the transparency
+                            of where your money goes to after it is donated. With the help
+                            of the truffle suite and solidity ethereum contracts, we propose a technical
+                            solution that will make the world a better place.
                         </p>
                         <Header as='h3' style={{fontSize: '2em'}}>
-                            We Make Bananas That Can Dance
+                            Founders of Transparent Charities
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
-                            Yes that's right, you thought it was the stuff of dreams, but even bananas can be
-                            bioengineered.
+                            The creators of Transparent Charities are Scott Swensen, Claire Goldstein and Kenny Nguyen.
+                            They are students under the Computer Science Program @ Colorado State Unversity. These
+                            students
+                            are looking for a way to enable the betterment of society.
                         </p>
                     </Grid.Column>
                     <Grid.Column floated='right' width={6}>
-                        <Image rounded size='large'
-                               src='https://www.ethereum.org/images/logos/ETHEREUM-LOGO_PORTRAIT_Black_small.png'/>
+                        <Image rounded size='medium'
+                            //src='https://www.ethereum.org/images/logos/ETHEREUM-LOGO_PORTRAIT_Black_small.png'/>
+                               src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/2000px-Ethereum_logo_2014.svg.png'/>
                     </Grid.Column>
                 </Grid.Row>
                 {/*<Grid.Row>*/}
@@ -267,17 +276,17 @@ const Home = () => (
                 <Grid.Row textAlign='center'>
                     <Grid.Column style={{paddingBottom: '5em', paddingTop: '5em'}}>
                         <Header as='h3' style={{fontSize: '2em'}}>
-                            "What a Company"
+                            Donate Etherium to your favorite Charities
                         </Header>
-                        <p style={{fontSize: '1.33em'}}>That is what they all say about us</p>
+                        <p style={{fontSize: '1.33em'}}> <a href='/charities'>Donate Now!</a></p>
                     </Grid.Column>
                     <Grid.Column style={{paddingBottom: '5em', paddingTop: '5em'}}>
                         <Header as='h3' style={{fontSize: '2em'}}>
-                            "I shouldn't have gone with their competitor."
+                          Create a Charity or Campaign!
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
-                            <i className="chart bar icon"/>
-                            <b>Nan</b> Chief Fun Officer Acme Toys
+                            <i className="heart outline icon"/>
+                            <b>please</b>
                         </p>
                     </Grid.Column>
                 </Grid.Row>
@@ -287,41 +296,29 @@ const Home = () => (
         <Segment style={{padding: '5em 0em'}} vertical>
             <Container text>
                 <Header as='h3' style={{fontSize: '2em'}}>
-                    Breaking The Grid, Grabs Your Attention
+                    More about our motivation
                 </Header>
                 <p style={{fontSize: '1.33em'}}>
-                    Instead of focusing on content creation and hard work, we have learned how to master the
-                    art of doing nothing by providing massive amounts of whitespace and generic content that
-                    can seem massive, monolithic and worth your attention.
+                Money does not buy happiness unless you spend your money on others. New studies have shown that if you spend money on others or give money to charity it will increase your happiness more than spending that money on yourself. Grassroots and crowdfunding campaigns have opened an approachable way for people to interact with causes that they want to support. Many people are skeptical to donate money to a foundation because they do not know where the money will end up entirely. The Charity Platform is similar to GoFundMe, allowing users to create a campaign. When donating money to a campaign there are small percentages of money going to GoFundMe, but not the Transparent Charity Platform. When an organizer pulls their money out of a campaign there is a heavy transaction fee through the bank for GoFundMe, but not the Charity Platform. Donators do not see where the money goes after their donation on GoFundMe, but the Charity Platform uses Blockchain Technology to solve this problem with the transparency of transactions.
+
                 </p>
-                <Button as='a' size='large'>
-                    Read More
-                </Button>
+
 
                 <Divider
-                    as='h4'
+                    as='h2'
                     className='header'
                     horizontal
                     style={{margin: '3em 0em', textTransform: 'uppercase'}}
                 >
-                    <a href='/'>Case Studies</a>
+                    <a href='/company'>Click for more information </a>
                 </Divider>
 
-                <Header as='h3' style={{fontSize: '2em'}}>
-                    Did We Tell You About Our Bananas?
-                </Header>
-                <p style={{fontSize: '1.33em'}}>
-                    Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but
-                    it's really true. It took years of gene splicing and combinatory DNA research, but our
-                    bananas can really dance.
-                </p>
-                <Button as='a' size='large'>
-                    I'm Still Quite Interested
-                </Button>
+
+
             </Container>
         </Segment>
         <Footer/>
     </ResponsiveContainer>
-)
+);
 
 export default Home

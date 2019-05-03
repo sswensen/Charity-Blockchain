@@ -1,7 +1,8 @@
 import React, {Component} from "react";
-import {Button, Container, Header, Menu, Responsive, Segment, Visibility} from "semantic-ui-react";
+import {Button, Container, Header, Icon, Menu, Responsive, Segment, Sidebar, Visibility} from "semantic-ui-react";
 import PropTypes from "prop-types";
 import Footer from "../footer/Footer";
+import {Link} from "react-router-dom";
 
 
 class About extends Component {
@@ -11,7 +12,7 @@ class About extends Component {
                 <Segment style={{padding: '5em 0em'}} vertical secondary>
                     <Container>
                         <div>
-                            <div className="ui three column grid">
+                            <div className="ui three column grid stackable">
                                 <div className="column">
                                     {/* Scott */}
                                     <div className="ui fluid card teal">
@@ -39,7 +40,7 @@ class About extends Component {
                                       </span>
                                             <span>
                                         <i className="user icon"/>
-                                        75 Friends
+                                        Scott
                                       </span>
                                         </div>
                                     </div>
@@ -73,7 +74,7 @@ class About extends Component {
                                       </span>
                                             <span>
                                         <i className="user icon"/>
-                                        35 Friends
+                                        Claire
                                       </span>
                                         </div>
                                     </div>
@@ -106,7 +107,7 @@ class About extends Component {
                                       </span>
                                             <span>
                                         <i className="user icon"/>
-                                        151 Friends
+                                        Kenny
                                       </span>
                                         </div>
                                     </div>
@@ -200,10 +201,11 @@ class DesktopContainer extends Component {
                                 <a className="item active" href="/about">About</a>
 
                                 <Menu.Item position='right'>
-                                    <Button as='a' inverted={!fixed}>
+                                    <Button as='a' inverted={!fixed} href="/login">
                                         Log in
                                     </Button>
-                                    <Button as='a' inverted={!fixed} primary={fixed} style={{marginLeft: '0.5em'}}>
+                                    <Button as='a' inverted={!fixed} primary={fixed} style={{marginLeft: '0.5em'}}
+                                            href="/sign-up">
                                         Sign Up
                                     </Button>
                                 </Menu.Item>
@@ -226,9 +228,81 @@ DesktopContainer.propTypes = {
 const ResponsiveContainer = ({children}) => (
     <div className="full">
         <DesktopContainer>{children}</DesktopContainer>
+        <MobileContainer>{children}</MobileContainer>
     </div>
 );
 
 ResponsiveContainer.propTypes = {
+    children: PropTypes.node,
+};
+
+class MobileContainer extends Component {
+    state = {};
+
+    handleSidebarHide = () => this.setState({sidebarOpened: false});
+
+    handleToggle = () => this.setState({sidebarOpened: true});
+
+    render() {
+        const {children} = this.props;
+        const {sidebarOpened} = this.state;
+
+        return (
+            <Responsive
+                as={Sidebar.Pushable}
+                getWidth={getWidth}
+                maxWidth={Responsive.onlyMobile.maxWidth}
+            >
+                <Sidebar
+                    as={Menu}
+                    animation='push'
+                    inverted
+                    onHide={this.handleSidebarHide}
+                    vertical
+                    visible={sidebarOpened}
+                >
+                    <Menu.Item as='a' active>
+                        Home
+                    </Menu.Item>
+                    <Menu.Item><Link to="/">Home</Link></Menu.Item>
+                    <Menu.Item><Link to="/charities">Charities</Link></Menu.Item>
+                    <Menu.Item active><Link to="/company">Company</Link></Menu.Item>
+                    <Menu.Item><Link to="/about">About</Link></Menu.Item>
+                </Sidebar>
+
+                <Sidebar.Pusher dimmed={sidebarOpened}>
+                    <Segment
+                        inverted
+                        textAlign='center'
+                        style={{minHeight: 350, padding: '1em 0em'}}
+                        vertical
+                    >
+                        <Container>
+                            <Menu inverted pointing secondary size='large'>
+                                <Menu.Item onClick={this.handleToggle}>
+                                    <Icon name='sidebar'/>
+                                </Menu.Item>
+                                <Menu.Item position='right'>
+                                    <Button as='a' inverted href="/login">
+                                        Log in
+                                    </Button>
+                                    <Button as='a' inverted style={{marginLeft: '0.5em'}}
+                                            href="/sign-up">
+                                        Sign Up
+                                    </Button>
+                                </Menu.Item>
+                            </Menu>
+                        </Container>
+                        <PageHeading mobile/>
+                    </Segment>
+
+                    {children}
+                </Sidebar.Pusher>
+            </Responsive>
+        )
+    }
+}
+
+MobileContainer.propTypes = {
     children: PropTypes.node,
 };

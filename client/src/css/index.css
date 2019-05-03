@@ -20,3 +20,8 @@ html, body, .full {
 .absolute {
     position: absolute;
 }
+
+.transition-example {
+    -webkit-transition: 2s; /* Safari */
+    transition: 2s;
+}
