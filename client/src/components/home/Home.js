@@ -54,9 +54,9 @@ const HomepageHeading = ({mobile}) => (
             }}
         />
         <a href="./charities">
-            <Button primary size='huge'>
+            <Button labeled primary size='huge'>
+                <Icon name='gem'/>
                 Get Started
-                <Icon name='right arrow'/>
             </Button>
         </a>
     </Container>
@@ -285,7 +285,7 @@ const Home = () => (
                             "Donate to these charities now!"
                         </Header>
                         <p style={{fontSize: '1.33em'}}>
-                            <i className="chart bar icon"/>
+                            <i className="heart outline icon"/>
                             <b>please</b>
                         </p>
                     </Grid.Column>
