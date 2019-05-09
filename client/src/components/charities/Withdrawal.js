@@ -166,14 +166,14 @@ export default class Withdrawal extends Component {
 
                     <br/>
 
-                    <Grid columns={2} divided>
+                    <Grid columns={2} divided stackable>
                         <Grid.Row>
                             <Grid.Column>
                                 <Dropdown loading={this.state.formLoading} fluid
                                           text={this.state.charitySelected ? this.state.selectedCharity.name : 'Please Select a Charity'}
                                           floating labeled button icon='filter' className='icon'>
                                     <Dropdown.Menu>
-                                        <Dropdown.Header icon='tags' content='Filter by tag'/>
+                                        <Dropdown.Header icon='tags' content='Filter by name'/>
                                         <Dropdown.Divider/>
                                         {
                                             this.state.contracts.map((c) =>
