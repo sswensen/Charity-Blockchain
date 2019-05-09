@@ -174,7 +174,7 @@ export default class Withdrawal extends Component {
                                             this.state.contracts.map((c) =>
                                                 <Dropdown.Item key={c.name} text={c.name} description={c.bal}
                                                                value={c.name} onClick={this.handleClick.bind(this, c)}
-                                                disabled={c.owner !== this.state.owner}
+                                                               disabled={c.owner !== this.state.account}
                                                 />
                                             )
                                         }
