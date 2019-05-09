@@ -14,7 +14,7 @@ module.exports = function (deployer, network, accounts) {
     //deployer.deploy(Helpers);
 
     deployer.deploy(Charity1,"Scott Swensen Foundation\n", "A foundation for the success of Scott in his CS 481a3 class.\n\nBlockchain is hard and having a good foundation to fall back on in times of need is a necessity for every college student pursuing a degree in computer science.\n", {from: accounts[0]});
-    deployer.deploy(Charity2,"Claire Goldstein Foundation", "A foundation for the success of Claire in his CS 481a3 class.\n\nBlockchain is hard and having a good foundation to fall back on in times of need is a necessity for every college student pursuing a degree in applied computing technology.\n",  {from: accounts[0]});
+    deployer.deploy(Charity2,"Claire Goldstein Foundation", "A foundation for the success of Claire in his CS 481a3 class.\n\nBlockchain is hard and having a good foundation to fall back on in times of need is a necessity for every college student pursuing a degree in computer science.\n",  {from: accounts[0]});
     deployer.deploy(Charity3,"Kenny Nguyen Foundation", "A foundation for the success of Kenny in his CS 481a3 class.\n\nBlockchain is hard and having a good foundation to fall back on in times of need is a necessity for every college student pursuing a degree in applied computing technology.\n",  {from: accounts[0]});
     deployer.deploy(Charity4,"Chipotle For All\n", "The one and only, best and greatest burrito-birthing company. Long live the guacamole\n\nWe're all about preparing food without added colors, flavors, or preservatives (other than " +
         "lemon or lime juice, which can be used as preservatives — though we use them only for taste). " +

@@ -1,40 +1,44 @@
 import React, {Component} from "react";
+import {Message, Icon} from "semantic-ui-react";
 import CharityContainer from "./CharityContainer";
 
 class CardContainer extends Component {
-    state = {
-        // dataKey: null,
-        // testObject: {
-        //     "index": -1,
-        //     "name": "",
-        //     "description": ""
-        // },
+    constructor(props) {
+        super(props);
+        this.state = {
+            infoBox: true
+            // dataKey: null,
+            // testObject: {
+            //     "index": -1,
+            //     "name": "",
+            //     "description": ""
+            // },
 
-        // testIndex: "",
-        // testName: "",
-        // testDesription: "",
+            // testIndex: "",
+            // testName: "",
+            // testDesription: "",
 
-        // value: "",
-        // message: "",
+            // value: "",
+            // message: "",
 
-        // charityNames: [
-        //     "Scott Swensen Foundation",
-        //     "Claire Goldstein Foundation",
-        //     "Kenny Nguyen Foundation",
-        //     "Chipotle For All",
-        //     "Wounded Warriors",
-        //     "Blockchain Support Group",
-        // ],
-        // charityDescriptions: [
-        //     "A foundation for the success of Scott in his CS 481a3 class.",
-        //     "A foundation for the success of Claire in his CS 481a3 class.",
-        //     "A foundation for the success of Kenny in his CS 481a3 class.",
-        //     "The one and only, best and greatest burrito-birthing company. Long live the guacamole",
-        //     "Support our returning troops.",
-        //     "Help our team afford the cups of coffee we need to stay up every night to finish this project.",
-        // ],
+            // charityNames: [
+            //     "Scott Swensen Foundation",
+            //     "Claire Goldstein Foundation",
+            //     "Kenny Nguyen Foundation",
+            //     "Chipotle For All",
+            //     "Wounded Warriors",
+            //     "Blockchain Support Group",
+            // ],
+            // charityDescriptions: [
+            //     "A foundation for the success of Scott in his CS 481a3 class.",
+            //     "A foundation for the success of Claire in his CS 481a3 class.",
+            //     "A foundation for the success of Kenny in his CS 481a3 class.",
+            //     "The one and only, best and greatest burrito-birthing company. Long live the guacamole",
+            //     "Support our returning troops.",
+            //     "Help our team afford the cups of coffee we need to stay up every night to finish this project.",
+            // ],
 
-        // charities: [
+            // charities: [
             // {
             //     "index": 0,
             //     "name": "Scott Swensen Foundation",
@@ -66,8 +70,11 @@ class CardContainer extends Component {
             //     "description": "Support our returning troops. Go America. Why is this card formatting differently."
             // }
 
-        // ]
-    };
+            // ]
+
+        };
+        this.closeInfoBox = this.closeInfoBox.bind(this);
+    }
 
     componentDidMount() {
         // const {drizzle} = this.props;
@@ -177,6 +184,12 @@ class CardContainer extends Component {
     //         });
     // }
 
+    closeInfoBox() {
+        this.setState({
+            infoBox: false
+        })
+    }
+
     render() {
         // console.log(this.props.drizzleState.contracts);
         //
@@ -196,6 +209,19 @@ class CardContainer extends Component {
 
         return (
             <div>
+                <Message
+                    icon
+                    hidden={!this.state.infoBox}
+                    warning
+                >
+                    <Icon name='info circle'/>
+                    <Message.Content>
+                        <Message.Header>All charities have been reset since presentation!</Message.Header>
+                        We needed to fix a bug in our contract. All money has been re-donated to the respective charities.
+                    </Message.Content>
+                    <Icon name='window close outline' float="right" onClick={this.closeInfoBox}/>
+
+                </Message>
                 <div className="ui three cards stackable">
                     {objectToArray.map((c) =>
                         <CharityContainer key={c.address} charity={c} convert={this.convert} web3={this.props.drizzle.web3}/>

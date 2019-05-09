@@ -4,6 +4,7 @@ import CardContainer from "./CardContainer";
 import PropTypes from "prop-types";
 import Footer from "../footer/Footer";
 import {Link} from "react-router-dom";
+import Withdrawal from "./Withdrawal";
 
 class Charities extends Component {
     state = {loading: true, drizzleState: null};
@@ -28,6 +29,7 @@ class Charities extends Component {
         this.unsubscribe();
     };
 
+
     render() {
         if (this.state.loading) return (
             <div className="ui segment wrapper">
@@ -49,6 +51,10 @@ class Charities extends Component {
                                 <i className="plus icon"></i>
                                 Add Charity
                             </Button>
+                                <Withdrawal
+                                    drizzle={this.props.drizzle}
+                                    drizzleState={this.state.drizzleState}
+                                />
                         </div>
                     </Container>
                 </Segment>
