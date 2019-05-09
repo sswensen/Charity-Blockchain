@@ -32,7 +32,7 @@ You can run the provided script to install all dependencies and deploy the contr
 $ ./update.sh // Install everything automatically
 ```
 
-Install dependencies manually:
+Install dependencies [manually](https://i.redd.it/9fh3itjql1x21.jpg):
 ```bash
 $ cd client
 $ npm install // Install all dependencies
