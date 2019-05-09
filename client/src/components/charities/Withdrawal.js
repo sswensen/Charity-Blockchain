@@ -97,6 +97,7 @@ export default class Withdrawal extends Component {
     handleSubmit(event) {
         event.preventDefault();
         var that = this;
+        var amount = this.state.value * (10 ** 18);
 
         this.props.drizzle.web3.eth.getAccounts((error, accounts) => {
             this.setState({
@@ -105,9 +106,9 @@ export default class Withdrawal extends Component {
                 successMessage: "",
                 errorMessage: ""
             });
-            var donatePromise = this.state.fullContracts.get(this.state.selectedCharity.name).methods.withdrawl(this.state.value, "", this.state.owner).send({ // TODO Update these params after successful migration
+            var donatePromise = this.state.fullContracts.get(this.state.selectedCharity.name).methods.withdrawal(amount, "").send({
                 from: accounts[0],
-                //value: this.props.drizzle.web3.utils.toWei(this.state.value, "ether"),
+                //value: this.props.drizzle.web3.utils.toWei(amount, "ether"),
                 gas: "4500000"
             })
                 .then((result) => {
@@ -117,9 +118,8 @@ export default class Withdrawal extends Component {
                         dropLoading: false,
                     });
                     that.setState({
-                        successMessage: "Successfully withdrew " + this.state.value + " Ethereum!"
+                        successMessage: "Successfully withdrew " + amount / (10 ** 18) + " Ethereum!"
                     });
-                    this.props.updateCharityBalance();
                 });
 
             donatePromise.catch(function (error) {
