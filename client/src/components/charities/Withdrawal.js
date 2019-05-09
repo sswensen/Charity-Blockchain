@@ -14,10 +14,10 @@ export default class Withdrawal extends Component {
             dropLoading: false,
             options: [],
             contracts: [],
-            testing: "",
+            fullContracts: {},
             selectedCharity: {},
             charitySelected: false,
-            account: "",
+            account: ""
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -54,7 +54,9 @@ export default class Withdrawal extends Component {
     updateContracts() {
         this.setState({
             contracts: []
-        })
+        });
+        let myContracts = new Map();
+
         const objectToArray = Object.keys(this.props.drizzle.contracts).map(i => this.props.drizzle.contracts[i]);
         for (let i = 0; i < objectToArray.length; i++) {
             objectToArray[i].methods.getCharityName().call()
@@ -63,6 +65,7 @@ export default class Withdrawal extends Component {
                         .then((response2) => {
                             objectToArray[i].methods.getOwner().call()
                                 .then((response3) => {
+                                    myContracts.set(response, objectToArray[i]);
                                     this.setState({
                                         contracts: this.state.contracts.concat({
                                             name: response,
@@ -74,6 +77,10 @@ export default class Withdrawal extends Component {
                         })
                 });
         }
+
+        this.setState({
+            fullContracts: myContracts
+        })
     }
 
     handleChange(event) {
@@ -90,18 +97,17 @@ export default class Withdrawal extends Component {
     handleSubmit(event) {
         event.preventDefault();
         var that = this;
-        var amount = this.state.value;
 
-        this.props.web3.eth.getAccounts((error, accounts) => {
+        this.props.drizzle.web3.eth.getAccounts((error, accounts) => {
             this.setState({
                 formLoading: true,
                 dropLoading: true,
                 successMessage: "",
                 errorMessage: ""
             });
-            var donatePromise = this.props.charity.methods.withdrawl().send({
+            var donatePromise = this.state.fullContracts.get(this.state.selectedCharity.name).methods.withdrawl(this.state.value, "", this.state.owner).send({ // TODO Update these params after successful migration
                 from: accounts[0],
-                value: this.props.web3.utils.toWei(this.state.value, "ether"),
+                //value: this.props.drizzle.web3.utils.toWei(this.state.value, "ether"),
                 gas: "4500000"
             })
                 .then((result) => {
@@ -110,12 +116,8 @@ export default class Withdrawal extends Component {
                         formLoading: false,
                         dropLoading: false,
                     });
-                    this.props.charity.methods.getMyDonation().call()
-                        .then((response) => this.setState({
-                            yourContribution: response / (10 ** 18)
-                        }));
                     that.setState({
-                        successMessage: "Successfully donated " + amount + " Ethereum!"
+                        successMessage: "Successfully withdrew " + this.state.value + " Ethereum!"
                     });
                     this.props.updateCharityBalance();
                 });
