@@ -108,10 +108,16 @@ export default class DonateToCharity extends Component {
                     <Form onSubmit={this.handleSubmit} loading={this.state.formLoading} success={!!this.state.successMessage} error={!!this.state.errorMessage}>
                         <Form.Field>
                             <label>Donation amount:</label>
-                            <input
-                                placeholder="Amount"
-                                onChange={event => this.setState({value: event.target.value})}
-                            />
+
+                            <div className="ui right labeled input" data-children-count="1">
+                                <label htmlFor="amount" className="ui label">$</label>
+                                <input type="text" placeholder="Amount in Ethereum" id="amount"
+                                       onChange={event => this.setState({value: event.target.value})}
+                                />
+                                    <div className="ui basic label"> Ethereum</div>
+                            </div>
+
+
                         </Form.Field>
                         <Message error header="Oops!" content={this.state.errorMessage}/>
                         <Message success header="Success!" content={this.state.successMessage}/>
