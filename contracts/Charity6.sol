@@ -110,9 +110,10 @@ contract Charity6 {
 	}
 
 
-	function withdrawl(uint amount, string reason, address sender) public only_owner(sender) returns (bool) {
+	function withdrawl(uint amount, string reason) public only_owner(sender) returns (bool) {
 		require(balance >= amount);
 		transact(amount, reason);
+		balance -= amount;
 		msg.sender.transfer(amount);
 		emit WithdrawalEvent(msg.sender, amount, reason);
 		return true;
