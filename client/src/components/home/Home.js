@@ -54,7 +54,7 @@ const HomepageHeading = ({mobile}) => (
             }}
         />
         <a href="./charities">
-            <Button labeled primary size='huge'>
+            <Button primary size='huge'>
                 <Icon name='gem'/>
                 Get Started
             </Button>
