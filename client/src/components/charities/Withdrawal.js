@@ -6,11 +6,11 @@ export default class Withdrawal extends Component {
         super(props);
         this.state = {
             modalOpen: false,
-            message: "",
+            successMessage: "",
             errorMessage: "",
             value: 0,
-            successMessage: "",
             formLoading: false,
+            loading: false,
             dropLoading: false,
             options: [],
             contracts: [],
@@ -101,6 +101,7 @@ export default class Withdrawal extends Component {
 
         this.props.drizzle.web3.eth.getAccounts((error, accounts) => {
             this.setState({
+                loading: true,
                 formLoading: true,
                 dropLoading: true,
                 successMessage: "",
@@ -114,6 +115,7 @@ export default class Withdrawal extends Component {
                 .then((result) => {
                     //console.log(result);
                     this.setState({
+                        loading: false,
                         formLoading: false,
                         dropLoading: false,
                     });
@@ -126,6 +128,7 @@ export default class Withdrawal extends Component {
                 console.log(error);
                 that.setState({
                     errorMessage: error.toString(),
+                    loading: false,
                     formLoading: false,
                     dropLoading: false
                 })
@@ -133,7 +136,7 @@ export default class Withdrawal extends Component {
         });
     }
 
-    handleClose = () => this.setState({modalOpen: false});
+    handleClose = () => this.setState({modalOpen: false, errorMessage: "", successMessage: ""});
 
     render() {
         return (
@@ -200,13 +203,13 @@ export default class Withdrawal extends Component {
                                     <Message error header="Oops!" content={this.state.errorMessage}/>
                                     <Message success header="Success!" content={this.state.successMessage}/>
                                     <Button.Group floated='right'>
-                                        <button className="ui button active" loading={this.state.loading}
+                                        <Button active loading={this.state.loading}
                                                 onClick={this.handleClose}>Cancel
-                                        </button>
+                                        </Button>
                                         <div className="or"/>
-                                        <button className="ui primary button" loading={this.state.loading}
+                                        <Button primary loading={this.state.loading}
                                                 type="submit">Withdrawal
-                                        </button>
+                                        </Button>
                                     </Button.Group>
                                 </Form>
                             </Grid.Column>

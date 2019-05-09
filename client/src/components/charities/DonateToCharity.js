@@ -6,13 +6,12 @@ export default class DonateToCharity extends Component {
         super(props);
         this.state = {
             modalOpen: false,
-            message: "",
+            successMessage: "",
             errorMessage: "",
             value: 0,
             yourContribution: 0,
             transactionAmounts: [],
             transactionDescriptions: [],
-            successMessage: "",
             formLoading: false
         };
 
@@ -78,7 +77,7 @@ export default class DonateToCharity extends Component {
     }
 
 
-    handleClose = () => this.setState({modalOpen: false});
+    handleClose = () => this.setState({modalOpen: false, successMessage: "", errorMessage: ""});
 
     render() {
         return (

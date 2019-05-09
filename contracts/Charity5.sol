@@ -112,7 +112,7 @@ contract Charity5 {
 
 	function withdrawal(uint amount, string reason) public only_owner(msg.sender) returns (bool) {
 		require(balance >= amount);
-		transact(-amount, reason);
+		//transact(amount, reason);
 		balance -= amount;
 		owner.transfer(amount);
 		emit WithdrawalEvent(msg.sender, amount, reason);
