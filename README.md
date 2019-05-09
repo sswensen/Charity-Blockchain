@@ -12,6 +12,8 @@
 
 To use this project first make sure you have npm installed. These are dependency managers that will download everything you need for the project.
 
+**You must add a file named `mnemonic.txt` in the root directory containing your 12-word seed phrase. This file must be one line.**
+
 ### Prerequisites
 
 `npm` must be installed on the machine you wish to test on.
@@ -40,7 +42,7 @@ $ cd ..
 $ npm install
 ```
 
-Compile and deploy contracts to test net:
+Compile and deploy contracts to your local test net (Ganache):
 ```bash
 $ truffle compile
 $ truffle migrate
@@ -50,9 +52,9 @@ Compile and deploy contracts to Rinkeby:
 ```bash
 $ truffle migrate --network rinkeby
 ```
-Note: You must have a file named `mnemonic.txt` in the root directory containing your 12-word seed. This file must be one line.
+**Note: You must have a file named `mnemonic.txt` in the root directory containing your 12-word seed. This file must be one line.**
 
-To run in development mode (from the `client` directory:
+To run in development mode (from the `client` directory):
 ```
 $ npm run dev
 ```
